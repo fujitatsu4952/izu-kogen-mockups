@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>index｜伊豆高原 mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+/* グローバルナビ */
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+/* 写真プレースホルダ */
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.wide { aspect-ratio: 16 / 9; }
+.photo.square { aspect-ratio: 1 / 1; }
+
+/* フッター */
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); }
+
+/* バリアントラベル */
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+
+body { padding: 60px; max-width: 1200px; margin: 0 auto; }
+h1 { font-family: "Noto Serif JP", serif; font-size: 26px; letter-spacing: 0.3em; margin-bottom: 16px; }
+.lead { font-size: 13px; color: var(--muted); margin-bottom: 60px; line-height: 2.2; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.card { display: block; padding: 28px 30px; border: 1px solid #ece9e3; background: #fff; transition: background 0.2s; }
+.card:hover { background: #f5f2eb; }
+.card-num { font-family: "Lato", sans-serif; font-size: 11px; color: var(--soft); letter-spacing: 0.3em; }
+.card-title { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.3em; margin: 6px 0 12px; }
+.card-axes { font-size: 11px; color: var(--accent); letter-spacing: 0.1em; line-height: 1.8; }
+.foot { margin-top: 60px; font-size: 11px; color: var(--soft); }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">IZU・KOGEN</div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<h1>伊豆高原サイト モックアップ 10案</h1>
+<div class="lead">
+デザイン示唆Doc（6カテゴリ21項目）を基準に、配色レンジ・hero型・構造を意図的に振り分けて10通りの方向性をHTMLで実体化。<br>
+各案、強く振った軸（A-1〜F-21の番号）を明示。クリックで開きます。
+</div>
+<div class="grid"><a class="card" href="01-seihitsu-minimal.html"><div class="card-num">01</div><div class="card-title">静謐ミニマル</div><div class="card-axes">B-7 縦書きhero／C-10 暗側／A-2 縦長</div></a>
+<a class="card" href="02-atatakai-yohaku.html"><div class="card-num">02</div><div class="card-title">温い余白</div><div class="card-axes">A-3 写真と短文のリズム／A-4 大胆な余白</div></a>
+<a class="card" href="03-iriguchi-bunri.html"><div class="card-num">03</div><div class="card-title">入口分離</div><div class="card-axes">E-15 トップ=heroのみ／A-1 完全contained</div></a>
+<a class="card" href="04-geopark.html"><div class="card-num">04</div><div class="card-title">ジオパーク</div><div class="card-axes">A-3 大判写真contained（Entô上限）</div></a>
+<a class="card" href="05-tategaki-kyokuchi.html"><div class="card-num">05</div><div class="card-title">縦書き極致</div><div class="card-axes">B-7 縦書き和文をhero＋全節見出しに徹底</div></a>
+<a class="card" href="06-taihi.html"><div class="card-num">06</div><div class="card-title">対比型</div><div class="card-axes">C-10＋C-9 暗⇄温白の交互配置</div></a>
+<a class="card" href="07-eibun-shudo.html"><div class="card-num">07</div><div class="card-title">英文主導</div><div class="card-axes">B-6 英文タイポを主役・和文は要所</div></a>
+<a class="card" href="08-shashin-stream.html"><div class="card-num">08</div><div class="card-title">写真ストリーム</div><div class="card-axes">非ヒエラルキー／写真と短文の連続</div></a>
+<a class="card" href="09-sayuu-hitaisho.html"><div class="card-num">09</div><div class="card-title">左右非対称</div><div class="card-axes">写真と文字の左右非対称配置</div></a>
+<a class="card" href="10-dark-flip.html"><div class="card-num">10</div><div class="card-title">ダーク反転</div><div class="card-axes">C-10振り切り／光sectionで「解放」を表現</div></a></div>
+<div class="foot">2026.5.26 作成 ／ 写真はプレースホルダ ／ 各ページ左下にバリエーション解説</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">伊豆高原</div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>index</b><div class="axes"></div></div>
+</body>
+</html>

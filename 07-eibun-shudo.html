@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>07. 英文主導｜伊豆高原 mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+/* グローバルナビ */
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+/* 写真プレースホルダ */
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.wide { aspect-ratio: 16 / 9; }
+.photo.square { aspect-ratio: 1 / 1; }
+
+/* フッター */
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); }
+
+/* バリアントラベル */
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+
+.hero-en { height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 12vw; gap: 28px; }
+.hero-en h1 { font-family: "Lato", serif; font-weight: 300; font-size: 64px; line-height: 1.2; max-width: 720px; letter-spacing: -0.01em; }
+.hero-en .ja { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--muted); }
+.hero-en small { font-size: 11px; letter-spacing: 0.3em; color: var(--soft); font-family: "Lato", sans-serif; }
+section.en { padding: 140px 12vw; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+section.en h2 { font-family: "Lato", sans-serif; font-weight: 400; font-size: 32px; }
+section.en h2 small { display: block; margin-top: 10px; font-family: "Noto Serif JP", serif; font-size: 12px; letter-spacing: 0.3em; color: var(--muted); }
+section.en p { font-size: 13px; line-height: 2.2; }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">IZU・KOGEN</div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<section class="hero-en">
+  <h1>Where the morning<br>meets oblivion.</h1>
+  <div class="ja">無慈悲なような、希望のような朝</div>
+  <small>HOTEL — IZU KOGEN — 2026.9</small>
+</section>
+<section class="en">
+  <h2>Rooms<small>客 室</small></h2>
+  <div class="photo portrait mid">ROOM</div>
+</section>
+<section class="en">
+  <div class="photo landscape mid">ONSEN</div>
+  <h2>Onsen<small>温 泉</small></h2>
+</section>
+<section class="en">
+  <h2>Dining<small>食 事</small></h2>
+  <div class="photo portrait mid">DINING</div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">伊豆高原</div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>07. 英文主導</b><div class="axes">強く振った軸: B-6 英文タイポを主役・和文は要所</div></div>
+</body>
+</html>

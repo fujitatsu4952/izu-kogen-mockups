@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10. ダーク反転｜伊豆高原 mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+/* グローバルナビ */
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+/* 写真プレースホルダ */
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.wide { aspect-ratio: 16 / 9; }
+.photo.square { aspect-ratio: 1 / 1; }
+
+/* フッター */
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); }
+
+/* バリアントラベル */
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+
+body { background: #1a1816; color: #d8d3cb; }
+.nav { color: #d8d3cb; mix-blend-mode: normal; }
+.nav .reserve-btn { border-color: #d8d3cb; }
+.hero-d { height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 50px; }
+.hero-d h1 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; }
+.hero-d small { font-size: 11px; color: rgba(216,211,203,0.4); letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.hero-d .photo { width: 280px; background: #2d2a27; color: rgba(216,211,203,0.3); }
+section.dark-section { padding: 160px 80px; max-width: 1000px; margin: 0 auto; }
+section.dark-section h2 { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.4em; margin-bottom: 30px; text-align: center; }
+section.dark-section p { text-align: center; font-size: 13px; max-width: 460px; margin: 0 auto; line-height: 2.4; color: rgba(216,211,203,0.7); }
+section.dark-section .photo-row { display: flex; gap: 30px; margin-top: 80px; justify-content: center; }
+section.dark-section .photo-row .photo { width: 220px; background: #2d2a27; color: rgba(216,211,203,0.3); }
+section.light-band { background: #FAFAF7; color: var(--text); padding: 100px 80px; text-align: center; }
+section.light-band h2 { font-family: "Noto Serif JP", serif; font-size: 20px; letter-spacing: 0.4em; margin-bottom: 20px; }
+section.light-band p { font-size: 13px; color: var(--muted); max-width: 380px; margin: 0 auto; line-height: 2.2; }
+footer { background: #0f0e0c; border-top: 1px solid #2d2a27; color: rgba(216,211,203,0.5); }
+.footer-logo { color: #d8d3cb !important; }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">IZU・KOGEN</div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<section class="hero-d">
+  <div class="photo portrait">ROOM</div>
+  <h1>籠　る</h1>
+  <small>HOTEL IZU KOGEN / OPEN 2026.9</small>
+</section>
+<section class="dark-section">
+  <h2>無慈悲なような朝</h2>
+  <p>視界の四隅が暗く、外界から閉ざされた朝。<br>夜が、朝になる気配。</p>
+  <div class="photo-row">
+    <div class="photo portrait">ROOM</div>
+    <div class="photo portrait">ROOM</div>
+    <div class="photo portrait">ROOM</div>
+  </div>
+</section>
+<section class="light-band">
+  <h2>解　放</h2>
+  <p>そして、ふと光が差す。<br>静かに、確実に。</p>
+</section>
+<section class="dark-section">
+  <h2>温　泉</h2>
+  <p>源泉かけ流し。水音だけが時間を運ぶ。</p>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">伊豆高原</div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>10. ダーク反転</b><div class="axes">強く振った軸: C-10 振り切り暗側／光のsection 1枚で「解放」を表現</div></div>
+</body>
+</html>
