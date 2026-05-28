@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -92,6 +93,32 @@ section { padding: 160px 80px; max-width: 900px; margin: 0 auto; }
 .location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 16px; }
 .location-meta dd { color: var(--text); margin-top: 4px; }
 
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding: 80px 24px 60px; gap: 40px; height: auto; min-height: 90vh; }
+  .hero-text { font-size: 18px; letter-spacing: 0.25em; justify-self: center; line-height: 2; align-self: end; }
+  .hero-text small { font-size: 10px; }
+  .hero-photo { width: 60%; max-width: 240px; justify-self: center; }
+  section { padding: 100px 24px; }
+  .concept { padding: 100px 24px; }
+  .concept h2 { font-size: 18px; letter-spacing: 0.3em; margin-bottom: 40px; }
+  .concept p { font-size: 12px; }
+  .section-head { margin-bottom: 60px; }
+  .section-head .ja { font-size: 18px; letter-spacing: 0.3em; }
+  .section-head .lead { font-size: 12px; margin-top: 24px; }
+  .rooms { gap: 80px; }
+  .room { flex-direction: column; gap: 24px; align-items: flex-start; }
+  .room .photo { width: 100%; }
+  .room-meta h3 { font-size: 14px; }
+  .room-meta p { font-size: 12px; max-width: 100%; }
+  .rooms-note { font-size: 10px; padding: 0 8px; line-height: 1.8; }
+  .experience { gap: 60px; }
+  .exp-item { grid-template-columns: 56px 1fr; gap: 32px; }
+  .exp-item .label { font-size: 16px; height: 4em; letter-spacing: 0.3em; }
+  .exp-item .body { font-size: 12px; line-height: 2; }
+  .location { grid-template-columns: 1fr; gap: 40px; }
+  .location-meta h3 { font-size: 18px; }
+  .location-meta p { font-size: 12px; }
+}
 </style>
 </head>
 <body>

@@ -1,0 +1,81 @@
+/* 浮 -uki- SP/モバイル共通スタイル */
+/* 各モックアップで読み込んで、共通要素（nav・footer・写真・variant-tag）をSP対応 */
+
+@media (max-width: 768px) {
+  /* グローバルナビ */
+  .nav {
+    padding: 16px 20px !important;
+  }
+  .nav-logo {
+    font-size: 16px !important;
+    letter-spacing: 0.15em !important;
+    gap: 6px !important;
+  }
+  .nav-logo .romaji {
+    font-size: 9px !important;
+    letter-spacing: 0.2em !important;
+  }
+  .nav-right {
+    gap: 16px !important;
+  }
+  .menu-btn {
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+  }
+  .reserve-btn {
+    padding: 6px 12px !important;
+    font-size: 9px !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  /* フッター */
+  footer {
+    padding: 60px 24px 32px !important;
+    margin-top: 80px !important;
+  }
+  .footer-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+    font-size: 10px !important;
+  }
+  .footer-logo {
+    font-size: 16px !important;
+    letter-spacing: 0.15em !important;
+  }
+  .footer-logo .romaji {
+    font-size: 9px !important;
+  }
+
+  /* バリアントラベル */
+  .variant-tag {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    max-width: none !important;
+    font-size: 9px !important;
+    padding: 6px 10px !important;
+  }
+  .variant-tag .axes {
+    font-size: 8px !important;
+  }
+
+  /* 共通セクションパディング */
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 14px 16px !important;
+  }
+  .nav-logo {
+    font-size: 15px !important;
+  }
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}

@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -94,6 +95,32 @@ section.alt .photo { width: 100%; max-width: 420px; }
 .location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 16px; }
 .location-meta dd { color: var(--text); margin-top: 4px; }
 
+@media (max-width: 768px) {
+  .hero { padding: 120px 24px 80px; }
+  .hero h1 { font-size: 26px; letter-spacing: 0.3em; margin-bottom: 24px; }
+  .hero p { font-size: 10px; letter-spacing: 0.2em; }
+  .hero-photo { margin: 60px auto 0; width: 70%; max-width: 240px; }
+  .concept { padding: 100px 24px; }
+  .concept h2 { font-size: 18px; letter-spacing: 0.3em; margin-bottom: 40px; line-height: 1.8; }
+  .concept p { font-size: 12px; }
+  section.alt { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px; }
+  section.alt.flip > div:first-child { order: 0; }
+  section.alt .photo { max-width: 100%; }
+  .alt-text h2 { font-size: 18px; letter-spacing: 0.3em; }
+  .alt-text p { font-size: 12px; max-width: 100%; }
+  .rooms-list { padding: 60px 24px 100px; }
+  .rooms-list .names { font-size: 14px; letter-spacing: 0.3em; line-height: 2.4; }
+  .rooms-list .names span { padding: 0 6px; }
+  .experience-group { padding: 60px 0 100px; }
+  .exp-row { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  .exp-row.flip > div:first-child { order: 0; }
+  .exp-row .photo { max-width: 100%; }
+  .exp-text h3 { font-size: 18px; letter-spacing: 0.3em; }
+  .exp-text p { font-size: 12px; max-width: 100%; }
+  .location { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px; }
+  .location-meta h2 { font-size: 18px; }
+  .location-meta p { font-size: 12px; }
+}
 </style>
 </head>
 <body>

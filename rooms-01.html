@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -76,6 +77,24 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .info-block td { padding: 16px 24px; color: var(--text); border-top: 1px solid #ece9e3; }
 .info-block tr:last-child th, .info-block tr:last-child td { border-bottom: 1px solid #ece9e3; }
 
+@media (max-width: 768px) {
+  .page-head { padding: 140px 24px 80px; }
+  .page-head h1 { font-size: 24px; letter-spacing: 0.3em; }
+  .page-head p { font-size: 12px; margin-top: 40px; }
+  .room-anchors { gap: 16px; padding: 0 24px 60px; flex-wrap: wrap; }
+  .room-anchors a { font-size: 12px; letter-spacing: 0.2em; }
+  .room-detail { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  .room-detail.flip { grid-template-columns: 1fr; }
+  .room-detail.flip > .photos { order: 0; }
+  .room-detail .info .name { font-size: 22px; writing-mode: horizontal-tb; height: auto; letter-spacing: 0.3em; }
+  .room-detail .info .romaji { margin: 12px 0 20px; }
+  .room-detail .info .desc { font-size: 12px; max-width: 100%; line-height: 2.2; }
+  .room-detail .info .specs { font-size: 10px; max-width: 100%; }
+  .info-block { padding: 100px 24px 60px; }
+  .info-block h2 { font-size: 16px; }
+  .info-block th { padding: 12px 8px; font-size: 9px; width: 36%; letter-spacing: 0.2em; }
+  .info-block td { padding: 12px 8px; font-size: 11px; }
+}
 </style>
 </head>
 <body>

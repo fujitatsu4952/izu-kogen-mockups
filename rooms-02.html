@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -71,6 +72,21 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .info-block td { padding: 20px 24px; color: var(--text); border-top: 1px solid #ece9e3; }
 .info-block tr:last-child th, .info-block tr:last-child td { border-bottom: 1px solid #ece9e3; }
 
+@media (max-width: 768px) {
+  .page-head { padding: 140px 24px 100px; }
+  .page-head h1 { font-size: 28px; letter-spacing: 0.3em; }
+  .page-head p { font-size: 12px; margin-top: 40px; }
+  .room { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px; }
+  .room.flip > div:first-child { order: 0; }
+  .room .photo-area .photo { max-width: 100%; }
+  .room-text h2 { font-size: 22px; letter-spacing: 0.3em; }
+  .room-text p { font-size: 12px; max-width: 100%; }
+  .room-text .specs { font-size: 10px; max-width: 100%; }
+  .room-text .specs dt { width: 90px; }
+  .info-block { padding: 140px 24px 60px; }
+  .info-block th { padding: 14px 8px; font-size: 9px; width: 36%; letter-spacing: 0.2em; }
+  .info-block td { padding: 14px 8px; font-size: 11px; }
+}
 </style>
 </head>
 <body>

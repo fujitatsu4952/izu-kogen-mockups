@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -66,6 +67,21 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .exp .caption .specs dt { display: inline-block; font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); width: 110px; }
 .exp .caption .specs dd { display: inline; color: var(--text); }
 
+@media (max-width: 768px) {
+  .page-head { padding: 100px 0 60px; }
+  .page-head .photo { width: 100vw; margin-left: -24px; height: 50vh; }
+  .page-head .caption { padding: 24px 24px 0; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .page-head h1 { font-size: 24px; letter-spacing: 0.3em; }
+  .page-head small { font-size: 10px; }
+  .exp { padding: 80px 0; }
+  .exp .photo { width: 100vw; margin-left: -24px; height: 50vh; }
+  .exp .caption { grid-template-columns: 1fr; gap: 24px; padding: 24px 24px 0; }
+  .exp .caption h2 { font-size: 22px; letter-spacing: 0.3em; }
+  .exp .caption .lead { font-size: 14px; }
+  .exp .caption p { font-size: 12px; }
+  .exp .caption .specs { font-size: 10px; }
+  .exp .caption .specs dt { width: 90px; }
+}
 </style>
 </head>
 <body>

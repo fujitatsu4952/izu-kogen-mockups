@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -70,6 +71,21 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .exp-section .meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 12px; }
 .exp-section .meta dd { color: var(--text); }
 
+@media (max-width: 768px) {
+  .page-head { padding: 140px 24px 60px; }
+  .page-head h1 { font-size: 24px; letter-spacing: 0.3em; }
+  .page-head p { font-size: 12px; margin-top: 40px; }
+  .exp-anchors { gap: 20px; padding: 0 24px 80px; flex-wrap: wrap; }
+  .exp-anchors a { font-size: 13px; letter-spacing: 0.3em; }
+  .exp-section { grid-template-columns: 1fr; gap: 40px; padding: 80px 24px; }
+  .exp-section.flip { grid-template-columns: 1fr; }
+  .exp-section.flip > .photos { order: 0; }
+  .exp-section .name { font-size: 24px; writing-mode: horizontal-tb; height: auto; letter-spacing: 0.3em; }
+  .exp-section .en-label { margin: 16px 0 24px; }
+  .exp-section .lead { font-size: 13px; max-width: 100%; }
+  .exp-section .body { font-size: 12px; max-width: 100%; line-height: 2.2; }
+  .exp-section .meta { font-size: 10px; max-width: 100%; }
+}
 </style>
 </head>
 <body>

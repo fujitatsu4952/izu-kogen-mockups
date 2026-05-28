@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -88,6 +89,23 @@ section.cards { padding: 100px 80px 180px; display: grid; grid-template-columns:
 .location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 16px; }
 .location-meta dd { color: var(--text); margin-top: 4px; }
 
+@media (max-width: 768px) {
+  .hero { padding: 100px 0 40px; }
+  .hero .photo { width: 100vw; margin-left: -24px; height: 50vh; }
+  .hero-caption { padding: 24px 24px 0; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .hero-caption h1 { font-size: 22px; letter-spacing: 0.3em; }
+  .hero-caption small { font-size: 10px; letter-spacing: 0.2em; }
+  .concept { padding: 100px 24px; }
+  .concept h2 { font-size: 20px; letter-spacing: 0.3em; line-height: 1.8; }
+  .concept p { font-size: 12px; }
+  section.cards { grid-template-columns: 1fr; gap: 60px; padding: 80px 24px 120px; }
+  .card h3 { font-size: 16px; letter-spacing: 0.3em; }
+  .card p { font-size: 12px; }
+  .rooms-list { padding: 0 24px 100px; }
+  .rooms-list .names { font-size: 14px; letter-spacing: 0.3em; line-height: 2.4; }
+  .rooms-list .names span { padding: 0 6px; }
+  .location { grid-template-columns: 1fr; gap: 40px; padding: 0 24px 100px; }
+}
 </style>
 </head>
 <body>

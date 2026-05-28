@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -65,6 +66,19 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .exp-text .meta dt { display: inline-block; font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); width: 110px; }
 .exp-text .meta dd { display: inline; color: var(--text); }
 
+@media (max-width: 768px) {
+  .page-head { padding: 140px 24px 100px; }
+  .page-head h1 { font-size: 28px; letter-spacing: 0.3em; }
+  .page-head p { font-size: 12px; margin-top: 40px; }
+  .exp { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px; }
+  .exp.flip > div:first-child { order: 0; }
+  .exp .photo-area .photo { max-width: 100%; }
+  .exp-text h2 { font-size: 24px; letter-spacing: 0.3em; }
+  .exp-text .lead { font-size: 14px; max-width: 100%; }
+  .exp-text p { font-size: 12px; max-width: 100%; }
+  .exp-text .meta { font-size: 10px; max-width: 100%; }
+  .exp-text .meta dt { width: 90px; }
+}
 </style>
 </head>
 <body>

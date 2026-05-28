@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
 <script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
 <style>
 :root {
   --bg: #FAFAF7;
@@ -64,6 +65,16 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .detail-block th { text-align: left; padding: 16px 24px; color: var(--soft); font-weight: 400; font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; width: 30%; }
 .detail-block td { padding: 16px 24px; color: var(--text); }
 
+@media (max-width: 768px) {
+  .page-head { padding: 120px 24px 40px; }
+  .page-head h1 { font-size: 24px; letter-spacing: 0.3em; }
+  .exp-grid { grid-template-columns: 1fr; gap: 60px; padding: 60px 24px 80px; }
+  .exp-card .photo { width: 100%; max-width: 320px; }
+  .exp-card h3 { font-size: 22px; letter-spacing: 0.3em; }
+  .detail-block { padding: 60px 24px 60px; }
+  .detail-block th { padding: 12px 8px; font-size: 9px; width: 36%; letter-spacing: 0.2em; }
+  .detail-block td { padding: 12px 8px; font-size: 10px; }
+}
 </style>
 </head>
 <body>
