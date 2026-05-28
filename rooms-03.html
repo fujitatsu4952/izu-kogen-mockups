@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>客室｜浮 -uki- ／ 03. 入口分離 style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; color: var(--text); }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; color: var(--muted); }
+.nav-right { display: flex; gap: 28px; align-items: center; color: var(--muted); }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; cursor: pointer; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; color: var(--text); }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+
+/* ルームページ専用 — 入口分離スタイル: contained・シンプル・縦並び */
+.page-head { padding: 180px 0 100px; text-align: center; }
+.page-head h1 { font-family: "Noto Serif JP", serif; font-size: 36px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.page-head .en { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-top: 16px; }
+
+.room-grid { display: grid; grid-template-columns: repeat(2, 320px); gap: 80px 60px; justify-content: center; padding: 60px 40px 120px; }
+.room-card { text-align: center; }
+.room-card .photo { width: 320px; margin: 0 auto 28px; }
+.room-card h3 { font-family: "Noto Serif JP", serif; font-size: 20px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 8px; }
+.room-card .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); }
+.room-card .hint { font-size: 11px; color: var(--muted); margin-top: 16px; max-width: 240px; margin-left: auto; margin-right: auto; line-height: 2; }
+
+.info-block { padding: 120px 80px 80px; max-width: 720px; margin: 0 auto; text-align: center; border-top: 1px solid #ece9e3; }
+.info-block h2 { font-family: "Noto Serif JP", serif; font-size: 16px; letter-spacing: 0.4em; margin-bottom: 48px; color: var(--muted); }
+.info-block table { width: 100%; font-size: 11px; }
+.info-block th { text-align: left; padding: 14px 24px; color: var(--soft); font-weight: 400; font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; width: 30%; }
+.info-block td { padding: 14px 24px; color: var(--text); }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<section class="page-head">
+  <h1>客　室</h1>
+  <span class="en">ROOMS</span>
+</section>
+
+<section class="room-grid">
+  <div class="room-card">
+    <div class="photo dark portrait">桃浮</div>
+    <h3>桃　浮</h3>
+    <div class="romaji">MOMOUKI</div>
+    <p class="hint">東向き / 朝光 / 52㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo mid portrait">紫浮</div>
+    <h3>紫　浮</h3>
+    <div class="romaji">SHIUKI</div>
+    <p class="hint">西向き / 夕暮れ / 52㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo portrait">蝶浮</div>
+    <h3>蝶　浮</h3>
+    <div class="romaji">CHOUKI</div>
+    <p class="hint">森側 / 52㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo mid portrait">楊浮</div>
+    <h3>楊　浮</h3>
+    <div class="romaji">YAUKI</div>
+    <p class="hint">庭側 / 柳 / 52㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo dark portrait">啓浮</div>
+    <h3>啓　浮</h3>
+    <div class="romaji">KEIYUKI</div>
+    <p class="hint">北向き / 控えめな光 / 52㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo dark portrait">浮世</div>
+    <h3>浮　世</h3>
+    <div class="romaji">UKIYO</div>
+    <p class="hint">離れ / 全方位 / 68㎡</p>
+  </div>
+  <div class="room-card">
+    <div class="photo mid portrait">沙浮</div>
+    <h3>沙　浮</h3>
+    <div class="romaji">SAYUKI</div>
+    <p class="hint">庭側 / 静寂 / 52㎡</p>
+  </div>
+</section>
+
+<section class="info-block">
+  <h2>客室共通情報</h2>
+  <table>
+    <tr><th>CHECK IN</th><td>15:00 〜 19:00</td></tr>
+    <tr><th>CHECK OUT</th><td>〜 11:00</td></tr>
+    <tr><th>BATH</th><td>各室 露天風呂付き / 源泉かけ流し</td></tr>
+    <tr><th>AMENITY</th><td>タオル / 浴衣 / アメニティ一式</td></tr>
+    <tr><th>WIFI</th><td>全室 完備</td></tr>
+    <tr><th>SMOKING</th><td>全室 禁煙</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>rooms / 03 入口分離 style</b></div>
+</body>
+</html>
