@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>17. 写真ストリーム — Photo Stream｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; }
+a { color: inherit; text-decoration: none; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.square { aspect-ratio: 1 / 1; }
+
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+/* 写真ストリーム ／ デザインルール準拠 */
+.stream { padding-top: 100px; }
+
+/* セクション境界を控えめに表現（非ヒエラルキーを保ちつつ、5セクション構造を内包） */
+.section-mark { max-width: 1300px; margin: 60px auto; padding: 0 100px; display: flex; align-items: center; gap: 24px; color: var(--soft); }
+.section-mark .num { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.35em; }
+.section-mark .name { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.4em; padding-left: 0.4em; color: var(--muted); }
+.section-mark .line { flex: 1; border-top: 1px solid rgba(0,0,0,0.06); }
+.section-mark .en { font-family: "Lato", sans-serif; font-size: 9px; letter-spacing: 0.3em; }
+
+/* stream-row: 写真と短文を流れるように配置 */
+.stream-row { display: flex; align-items: flex-start; gap: 80px; padding: 80px 100px; max-width: 1300px; margin: 0 auto; }
+.stream-row.right { justify-content: flex-end; }
+.stream-row.center { justify-content: center; }
+.stream-row.between { justify-content: space-between; }
+
+/* 写真サイズ s / m / l ／ 章6.5 の余白ルール踏襲 */
+.stream-row .photo { flex-shrink: 0; }
+.stream-row .photo.size-s { width: 200px; }
+.stream-row .photo.size-m { width: 320px; }
+.stream-row .photo.size-l { width: 460px; }
+.stream-row .photo.size-xl { width: 600px; }
+
+/* テキスト ／ 章5 のフォント・字間ルール踏襲 */
+.stream-text { font-family: "Noto Serif JP", serif; font-size: 15px; letter-spacing: 0.2em; line-height: 2.4; max-width: 300px; align-self: center; color: var(--muted); }
+.stream-text.tate { writing-mode: vertical-rl; max-width: none; height: 220px; font-size: 18px; letter-spacing: 0.3em; line-height: 2.8; }
+.stream-text.tate.large { font-size: 28px; letter-spacing: 0.4em; height: 280px; color: var(--text); }
+.stream-text.headline { font-size: 18px; color: var(--text); max-width: 360px; }
+.stream-text .small { display: block; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-top: 16px; font-family: "Lato", sans-serif; }
+.stream-text .name { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); display: block; margin-bottom: 6px; }
+
+/* キャプション（写真の下） */
+.stream-row .with-caption { display: flex; flex-direction: column; }
+.stream-row .with-caption .caption { font-size: 10px; color: var(--soft); letter-spacing: 0.2em; margin-top: 12px; font-family: "Lato", sans-serif; }
+.stream-row .with-caption .caption .ja { font-family: "Noto Serif JP", serif; font-size: 12px; color: var(--muted); letter-spacing: 0.3em; margin-right: 10px; }
+
+@media (max-width: 768px) {
+  .stream { padding-top: 80px; }
+  .section-mark { padding: 0 24px; margin: 40px auto; gap: 12px; }
+  .section-mark .num { font-size: 9px; letter-spacing: 0.25em; }
+  .section-mark .name { font-size: 12px; }
+  .section-mark .en { font-size: 8px; }
+  .stream-row { flex-direction: column !important; gap: 24px; padding: 40px 24px; align-items: flex-start !important; justify-content: flex-start !important; }
+  .stream-row .photo.size-s { width: 50%; }
+  .stream-row .photo.size-m { width: 80%; }
+  .stream-row .photo.size-l, .stream-row .photo.size-xl { width: 100%; }
+  .stream-text { writing-mode: horizontal-tb !important; max-width: 100% !important; height: auto !important; font-size: 13px !important; letter-spacing: 0.2em !important; }
+  .stream-text.tate.large { font-size: 20px !important; }
+  .stream-text.headline { font-size: 15px !important; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<div class="stream">
+
+  <!-- 1. Top-KV — 写真ストリームの非ヒエラルキー的なopening -->
+  <div class="stream-row right">
+    <div class="stream-text tate large">浮<span class="small">UKI</span></div>
+    <div class="photo dark portrait size-l">KV</div>
+  </div>
+  <div class="stream-row center">
+    <div class="stream-text headline">無慈悲なような、希望のような朝。<br>湯に浮いて、日常から離れる。</div>
+  </div>
+
+  <!-- セクションマーク: コンセプト -->
+  <div class="section-mark">
+    <span class="num">02</span>
+    <span class="name">籠　る</span>
+    <span class="line"></span>
+    <span class="en">CONCEPT</span>
+  </div>
+
+  <div class="stream-row">
+    <div class="photo landscape size-l mid">朝霧</div>
+    <div class="stream-text tate">視界の四隅が暗く、外界から閉ざされた朝。そのなかで、ふと光が差す。</div>
+  </div>
+  <div class="stream-row right">
+    <div class="photo dark square size-s">影</div>
+    <div class="photo dark portrait size-m">朝の光</div>
+  </div>
+
+  <!-- セクションマーク: 客室 -->
+  <div class="section-mark">
+    <span class="num">03</span>
+    <span class="name">客　室</span>
+    <span class="line"></span>
+    <span class="en">ROOMS — 7 ROOMS</span>
+  </div>
+
+  <div class="stream-row between">
+    <div class="with-caption">
+      <div class="photo portrait size-m">桃浮</div>
+      <div class="caption"><span class="ja">桃浮</span>朝の部屋 ／ 東向き</div>
+    </div>
+    <div class="stream-text tate">全7室、すべて露天風呂付き。桃浮・紫浮・蝶浮・楊浮・啓浮・浮世・沙浮。</div>
+  </div>
+  <div class="stream-row">
+    <div class="with-caption">
+      <div class="photo dark portrait size-s">紫浮</div>
+      <div class="caption"><span class="ja">紫浮</span>夕暮れの部屋</div>
+    </div>
+    <div class="with-caption">
+      <div class="photo portrait size-l mid">浮世</div>
+      <div class="caption"><span class="ja">浮世</span>離れ ／ 全方位の景色</div>
+    </div>
+  </div>
+  <div class="stream-row right">
+    <div class="stream-text">— 全 7 室：桃浮 ・ 紫浮 ・ 蝶浮 ・ 楊浮 ・ 啓浮 ・ 浮世 ・ 沙浮 —</div>
+  </div>
+
+  <!-- セクションマーク: 体験 -->
+  <div class="section-mark">
+    <span class="num">04</span>
+    <span class="name">体　験</span>
+    <span class="line"></span>
+    <span class="en">EXPERIENCE</span>
+  </div>
+
+  <div class="stream-row">
+    <div class="stream-text tate large">湯<span class="small">YU</span></div>
+    <div class="photo landscape size-l dark">露天</div>
+  </div>
+  <div class="stream-row right">
+    <div class="stream-text"><span class="name">湯　YU</span>源泉かけ流し。眠る前と、目覚める前に、湯に浮く。「浮」という宿名の、最も静かな核。</div>
+  </div>
+
+  <div class="stream-row between">
+    <div class="with-caption">
+      <div class="photo portrait size-m">食卓</div>
+      <div class="caption"><span class="ja">食</span>ミクニ伊豆高原と提携</div>
+    </div>
+    <div class="stream-text tate">ミクニ伊豆高原での、ひと夜の食卓。朝は素泊まり前提の、静かな食卓。</div>
+  </div>
+
+  <div class="stream-row">
+    <div class="stream-text"><span class="name">自然　NATURE</span>八幡野の森と海。朝霧と夕暮れだけが、時間の境目を知らせる。</div>
+    <div class="photo dark portrait size-m">自然</div>
+  </div>
+
+  <!-- セクションマーク: ロケーション -->
+  <div class="section-mark">
+    <span class="num">05</span>
+    <span class="name">場　所</span>
+    <span class="line"></span>
+    <span class="en">LOCATION</span>
+  </div>
+
+  <div class="stream-row center">
+    <div class="photo landscape size-xl mid">八幡野 — MAP</div>
+  </div>
+  <div class="stream-row between">
+    <div class="stream-text"><span class="name">八幡野</span>静岡県伊東市八幡野。<br>伊豆高原駅から車で約10分、東京から特急で約2時間。</div>
+    <div class="stream-text" style="font-family: 'Lato', sans-serif; font-size: 10px; letter-spacing: 0.3em;">ADDRESS<br>静岡県伊東市八幡野<br><br>TRAIN<br>JR伊豆高原駅より車10分<br><br>OPEN<br>2026.9</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>17. 写真ストリーム — Photo Stream</b><div class="axes">archive/08のレイアウト ／ デザインルール準拠版 ／ 5セクション内包</div></div>
+</body>
+</html>
