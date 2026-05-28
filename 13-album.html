@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>13. 写真集 — Album｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; }
+a { color: inherit; text-decoration: none; }
+
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+/* 見開き */
+.spread { height: 100vh; scroll-snap-align: start; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 80px 80px; gap: 80px; position: relative; }
+.spread::before { content: ''; position: absolute; top: 80px; bottom: 80px; left: 50%; border-left: 1px solid rgba(0,0,0,0.05); }
+
+.page-left, .page-right { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 40px; }
+.page-photo { width: 100%; max-width: 480px; aspect-ratio: 3 / 4; align-self: center; }
+.page-photo.landscape { aspect-ratio: 4 / 3; max-width: 560px; }
+
+.page-text { max-width: 380px; align-self: center; }
+.page-text h2 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 16px; }
+.page-text .romaji { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-bottom: 40px; }
+.page-text p { font-size: 14px; line-height: 2.6; }
+.page-text .num { display: block; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-bottom: 40px; }
+
+.page-num { position: absolute; bottom: 40px; right: 80px; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); }
+
+/* ページめくりインジケーター */
+.scroll-hint { position: fixed; bottom: 30px; right: 40px; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--muted); z-index: 90; }
+
+@media (max-width: 768px) {
+  html { scroll-snap-type: none; }
+  .spread { grid-template-columns: 1fr; height: auto; min-height: 100vh; padding: 100px 24px 60px; gap: 40px; }
+  .spread::before { display: none; }
+  .page-left, .page-right { padding: 0; }
+  .page-photo { max-width: 100%; }
+  .page-text h2 { font-size: 24px; letter-spacing: 0.3em; padding-left: 0.3em; }
+  .page-text p { font-size: 13px; }
+  .page-num { bottom: 20px; right: 24px; font-size: 9px; }
+  .scroll-hint { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<!-- 表紙 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-text" style="text-align: center; margin: auto;">
+      <span class="num">— 浮 -uki- ／ A photo book —</span>
+      <h2 style="font-size: 56px;">浮</h2>
+    </div>
+  </div>
+  <div class="page-right">
+    <div class="page-photo dark"><span>KV</span></div>
+  </div>
+  <span class="page-num">001 — 002</span>
+</section>
+
+<!-- 見開き2: コンセプト -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-photo mid"><span>朝光</span></div>
+  </div>
+  <div class="page-right">
+    <div class="page-text">
+      <span class="num">— Chapter 1 ／ Concept</span>
+      <h2>籠　る</h2>
+      <span class="romaji">KOMORU</span>
+      <p>視界の四隅が暗く、外界から閉ざされた朝。<br>そのなかで、ふと光が差す。<br>湯に浮いて、日常から離れる。</p>
+    </div>
+  </div>
+  <span class="page-num">003 — 004</span>
+</section>
+
+<!-- 見開き3: 客室 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-text">
+      <span class="num">— Chapter 2 ／ Rooms</span>
+      <h2>客　室</h2>
+      <span class="romaji">ROOMS — 7 ROOMS</span>
+      <p>桃浮・紫浮・蝶浮・楊浮・<br>啓浮・浮世・沙浮。<br>全7室、すべて露天風呂付き。</p>
+    </div>
+  </div>
+  <div class="page-right">
+    <div class="page-photo"><span>桃浮</span></div>
+  </div>
+  <span class="page-num">005 — 006</span>
+</section>
+
+<!-- 見開き4: 客室 / 浮世 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-photo dark"><span>浮世</span></div>
+  </div>
+  <div class="page-right">
+    <div class="page-text">
+      <h2>浮　世</h2>
+      <span class="romaji">UKIYO</span>
+      <p>最も奥にある離れの部屋。<br>全方位の景色を持つ、<br>日常から最も遠い時間。</p>
+    </div>
+  </div>
+  <span class="page-num">007 — 008</span>
+</section>
+
+<!-- 見開き5: 湯 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-text">
+      <span class="num">— Chapter 3 ／ Hot Spring</span>
+      <h2>湯</h2>
+      <span class="romaji">YU — ONSEN</span>
+      <p>源泉かけ流し。<br>眠る前と、目覚める前に、<br>湯に浮く。</p>
+    </div>
+  </div>
+  <div class="page-right">
+    <div class="page-photo landscape mid"><span>露天</span></div>
+  </div>
+  <span class="page-num">009 — 010</span>
+</section>
+
+<!-- 見開き6: 食 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-photo"><span>食卓</span></div>
+  </div>
+  <div class="page-right">
+    <div class="page-text">
+      <span class="num">— Chapter 4 ／ Dining</span>
+      <h2>食</h2>
+      <span class="romaji">SHOKU — MIKUNI</span>
+      <p>ミクニ伊豆高原と提携。<br>夕食は車7分のレストランへ。<br>朝は素泊まり前提の食卓。</p>
+    </div>
+  </div>
+  <span class="page-num">011 — 012</span>
+</section>
+
+<!-- 見開き7: ロケーション -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-text">
+      <span class="num">— Chapter 5 ／ Location</span>
+      <h2>八幡野</h2>
+      <span class="romaji">YAWATANO</span>
+      <p>静岡県伊東市八幡野。<br>伊豆高原駅より車10分、<br>東京から特急2時間。</p>
+    </div>
+  </div>
+  <div class="page-right">
+    <div class="page-photo dark"><span>八幡野</span></div>
+  </div>
+  <span class="page-num">013 — 014</span>
+</section>
+
+<!-- 巻末 -->
+<section class="spread">
+  <div class="page-left">
+    <div class="page-text" style="text-align: center; margin: auto;">
+      <span class="num">— 浮 -uki- ／ END</span>
+      <h2 style="font-size: 32px;">浮 -uki-</h2>
+      <p style="font-size: 11px; color: var(--muted); margin-top: 24px;">静岡県伊東市八幡野<br>2026.9 OPEN<br><br>© KANGEISHA</p>
+    </div>
+  </div>
+  <div class="page-right">
+    <div style="text-align: center; margin: auto; padding: 40px;">
+      <a href="#" style="display: inline-block; padding: 16px 40px; border: 1px solid var(--text); font-family: 'Lato', sans-serif; font-size: 11px; letter-spacing: 0.35em;">RESERVE</a>
+    </div>
+  </div>
+  <span class="page-num">015 — 016</span>
+</section>
+
+<div class="scroll-hint">scroll to turn page</div>
+<div class="variant-tag"><b>13. 写真集 — Album</b><div class="axes">1セクション=1見開き ／ スクロールスナップで「めくる」</div></div>
+</body>
+</html>

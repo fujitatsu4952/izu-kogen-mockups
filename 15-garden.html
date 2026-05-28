@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>15. 庭園 — Garden｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; }
+a { color: inherit; text-decoration: none; }
+
+html, body { overflow-x: scroll; overflow-y: hidden; height: 100vh; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+/* 庭園回遊コンテナ */
+.garden { display: flex; height: 100vh; align-items: center; padding: 0 80px; gap: 80px; }
+.stop { flex-shrink: 0; height: 80vh; display: flex; flex-direction: column; justify-content: center; gap: 32px; min-width: 360px; }
+.stop-photo { flex-shrink: 0; height: 60vh; }
+.stop-photo.portrait { width: calc(60vh * 3 / 4); }
+.stop-photo.landscape { width: calc(60vh * 4 / 3); }
+.stop .step { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.4em; color: var(--soft); margin-bottom: 8px; }
+.stop .name { font-family: "Noto Serif JP", serif; font-size: 28px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 24px; }
+.stop p { font-size: 13px; line-height: 2.4; max-width: 320px; color: var(--muted); }
+
+/* 散策パス（点線で景色をつなぐ） */
+.garden::before { content: ''; position: fixed; left: 0; right: 0; top: 50%; border-top: 1px dashed rgba(0,0,0,0.08); z-index: -1; }
+
+/* 進捗インジケータ */
+.progress { position: fixed; bottom: 30px; right: 40px; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--muted); z-index: 90; display: flex; gap: 8px; align-items: center; }
+.progress .arrow { font-size: 16px; color: var(--soft); }
+
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+  .garden { flex-direction: column; height: auto; gap: 80px; padding: 100px 24px; }
+  .garden::before { display: none; }
+  .stop { height: auto; min-width: 0; gap: 24px; }
+  .stop-photo { height: auto; }
+  .stop-photo.portrait { width: 70%; }
+  .stop-photo.landscape { width: 100%; }
+  .stop .name { font-size: 22px; letter-spacing: 0.3em; padding-left: 0.3em; }
+  .progress { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<div class="garden">
+
+  <!-- 入口 -->
+  <div class="stop">
+    <div class="step">01 ／ 入口</div>
+    <div class="name">浮</div>
+    <p>八幡野の高台、森のなかに小さな門。<br>ここから日常を脱ぎ捨てる。</p>
+  </div>
+  <div class="photo dark portrait stop-photo">KV / 門</div>
+
+  <!-- コンセプト -->
+  <div class="stop">
+    <div class="step">02 ／ 静</div>
+    <div class="name">籠　る</div>
+    <p>視界の四隅が暗く、<br>外界から閉ざされた朝。<br>そのなかで、ふと光が差す。</p>
+  </div>
+  <div class="photo mid landscape stop-photo">朝霧</div>
+
+  <!-- 客室 -->
+  <div class="stop">
+    <div class="step">03 ／ 客室</div>
+    <div class="name">七つの浮</div>
+    <p>桃浮 ・ 紫浮 ・ 蝶浮<br>楊浮 ・ 啓浮 ・ 浮世 ・ 沙浮。<br>全7室、すべて露天風呂付き。</p>
+  </div>
+  <div class="photo portrait stop-photo">桃浮</div>
+  <div class="photo dark portrait stop-photo">浮世</div>
+
+  <!-- 湯 -->
+  <div class="stop">
+    <div class="step">04 ／ 湯</div>
+    <div class="name">湯</div>
+    <p>源泉かけ流し。<br>眠る前と、目覚める前に、<br>湯に浮く。</p>
+  </div>
+  <div class="photo landscape mid stop-photo">露天</div>
+
+  <!-- 食 -->
+  <div class="stop">
+    <div class="step">05 ／ 食</div>
+    <div class="name">食</div>
+    <p>ミクニ伊豆高原での、<br>ひと夜の食卓。<br>朝は素泊まり前提の、静かな食卓。</p>
+  </div>
+  <div class="photo portrait stop-photo">食卓</div>
+
+  <!-- 自然 -->
+  <div class="stop">
+    <div class="step">06 ／ 自然</div>
+    <div class="name">八幡野</div>
+    <p>森と海。<br>朝霧と夕暮れだけが、<br>時間の境目を知らせる。</p>
+  </div>
+  <div class="photo dark landscape stop-photo">森</div>
+
+  <!-- 出口 -->
+  <div class="stop">
+    <div class="step">07 ／ 出口</div>
+    <div class="name">浮 — 結</div>
+    <p>静岡県伊東市八幡野。<br>伊豆高原駅から車10分。<br>2026年9月開業。</p>
+    <a href="#" style="margin-top: 32px; display: inline-block; padding: 12px 32px; border: 1px solid var(--text); font-family: 'Lato', sans-serif; font-size: 11px; letter-spacing: 0.35em; align-self: flex-start;">RESERVE</a>
+  </div>
+
+</div>
+
+<div class="progress">→ 庭を歩く ／ scroll <span class="arrow">→</span></div>
+<div class="variant-tag"><b>15. 庭園 — Garden</b><div class="axes">横スクロール回遊式 ／ 入口→客室→湯→食→自然→出口</div></div>
+
+<script>
+// マウスホイールを横スクロールに変換
+window.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    e.preventDefault();
+    window.scrollBy({ left: e.deltaY * 1.8, behavior: 'auto' });
+  }
+}, { passive: false });
+</script>
+</body>
+</html>

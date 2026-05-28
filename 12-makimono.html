@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>12. 巻物 — Scroll｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; }
+a { color: inherit; text-decoration: none; }
+
+html, body { overflow-x: scroll; overflow-y: hidden; height: 100vh; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+/* 巻物コンテナ */
+.scroll-container { display: flex; height: 100vh; align-items: center; padding: 0 100px; gap: 100px; }
+.panel { flex-shrink: 0; height: 80vh; display: flex; align-items: center; gap: 60px; }
+.panel-text { writing-mode: vertical-rl; font-family: "Noto Serif JP", serif; line-height: 2.4; }
+.panel-text.large { font-size: 32px; letter-spacing: 0.4em; }
+.panel-text.medium { font-size: 22px; letter-spacing: 0.35em; }
+.panel-text.body { font-size: 14px; letter-spacing: 0.25em; line-height: 2.6; color: var(--muted); }
+.panel-text .small { display: block; font-size: 11px; color: var(--soft); letter-spacing: 0.2em; }
+.panel .photo { height: 70vh; flex-shrink: 0; }
+.panel .photo.portrait { width: calc(70vh * 3 / 4); }
+.panel .photo.landscape { width: calc(70vh * 4 / 3); }
+
+/* 進捗表示 */
+.scroll-progress { position: fixed; bottom: 30px; right: 40px; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--muted); z-index: 90; }
+
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+  .scroll-container { flex-direction: column; height: auto; gap: 60px; padding: 100px 24px; }
+  .panel { height: auto; flex-direction: column; gap: 24px; align-items: flex-start; }
+  .panel-text { writing-mode: horizontal-tb; }
+  .panel-text.large { font-size: 22px; letter-spacing: 0.3em; }
+  .panel-text.medium { font-size: 18px; }
+  .panel-text.body { font-size: 13px; }
+  .panel .photo { height: auto; width: 100%; }
+  .panel .photo.portrait { width: 70%; }
+  .panel .photo.landscape { width: 100%; }
+  .scroll-progress { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<div class="scroll-container">
+
+  <!-- 巻頭 -->
+  <div class="panel">
+    <div class="panel-text large">浮<span class="small">UKI</span></div>
+    <div class="photo dark portrait">KV</div>
+  </div>
+
+  <!-- コンセプト -->
+  <div class="panel">
+    <div class="panel-text medium">無慈悲なような、<br>希望のような朝</div>
+    <div class="panel-text body">視界の四隅が暗く、<br>外界から閉ざされた朝。<br>そのなかで、ふと光が差す。<br>湯に浮いて、日常から離れる。</div>
+  </div>
+
+  <!-- ルーム -->
+  <div class="panel">
+    <div class="panel-text medium">客　室</div>
+    <div class="photo mid portrait">桃浮</div>
+    <div class="panel-text body">全7室、すべて露天風呂付き。<br>桃浮・紫浮・蝶浮・楊浮<br>啓浮・浮世・沙浮。</div>
+    <div class="photo dark portrait">浮世</div>
+  </div>
+
+  <!-- 体験 -->
+  <div class="panel">
+    <div class="panel-text medium">湯</div>
+    <div class="photo landscape">温泉</div>
+    <div class="panel-text body">源泉かけ流し。<br>眠る前と、目覚める前に、<br>湯に浮く。</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-text medium">食</div>
+    <div class="panel-text body">ミクニ伊豆高原での、<br>ひと夜の食卓。<br>朝は素泊まり前提の、<br>静かな食卓。</div>
+    <div class="photo portrait mid">食卓</div>
+  </div>
+
+  <!-- ロケーション -->
+  <div class="panel">
+    <div class="panel-text medium">八幡野</div>
+    <div class="photo dark landscape">場所</div>
+    <div class="panel-text body">静岡県伊東市八幡野。<br>伊豆高原駅より車10分。<br>2026年9月 OPEN。</div>
+  </div>
+
+  <!-- 巻尾 -->
+  <div class="panel">
+    <div class="panel-text large">浮<span class="small">- 結 -</span></div>
+  </div>
+
+</div>
+
+<div class="scroll-progress">← scroll →</div>
+
+<div class="variant-tag"><b>12. 巻物 — Scroll</b><div class="axes">横スクロールで進む巻物型 ／ 全縦書き</div></div>
+
+<script>
+// マウスホイールを横スクロールに変換
+window.addEventListener('wheel', (e) => {
+  if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+    e.preventDefault();
+    window.scrollBy({ left: e.deltaY * 1.8, behavior: 'auto' });
+  }
+}, { passive: false });
+</script>
+</body>
+</html>

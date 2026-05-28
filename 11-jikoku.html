@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11. 時刻 — Hours｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; }
+a { color: inherit; text-decoration: none; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.square { aspect-ratio: 1 / 1; }
+
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+/* 時刻表示（画面右隅・固定） */
+.time-indicator { position: fixed; top: 50%; right: 32px; transform: translateY(-50%); font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.4em; color: var(--muted); writing-mode: vertical-rl; z-index: 90; }
+.time-indicator .label { font-size: 9px; color: var(--soft); margin-left: 16px; }
+
+/* 時刻ベースのセクション */
+.hour-section { min-height: 100vh; padding: 140px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; max-width: 1200px; margin: 0 auto; }
+.hour-section .time-mark { position: absolute; top: 100px; left: 80px; font-family: "Lato", sans-serif; font-size: 12px; letter-spacing: 0.35em; color: var(--soft); }
+.hour-section .label { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.5em; padding-left: 0.5em; color: var(--muted); margin-bottom: 60px; }
+.hour-section h2 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.4em; padding-left: 0.4em; margin-bottom: 40px; line-height: 1.8; }
+.hour-section p { font-size: 13px; line-height: 2.4; max-width: 480px; color: var(--text); margin-bottom: 60px; }
+
+/* 写真ストリーム配置（時刻ごとに） */
+.stream { display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; margin-top: 40px; }
+.stream .photo.s { width: 180px; }
+.stream .photo.m { width: 300px; }
+.stream .photo.l { width: 440px; }
+
+/* 暁前のセクション（暗いトーン） */
+.section-dawn { background: var(--dark); color: var(--bg); margin: 0 -100vw; padding-left: calc(100vw + 80px); padding-right: calc(100vw + 80px); padding-top: 200px; padding-bottom: 200px; }
+.section-dawn .time-mark { color: rgba(250,250,247,0.5); }
+.section-dawn .label { color: rgba(250,250,247,0.7); }
+.section-dawn h2 { color: var(--bg); }
+.section-dawn p { color: rgba(250,250,247,0.85); }
+
+@media (max-width: 768px) {
+  .time-indicator { display: none; }
+  .hour-section { padding: 100px 24px; }
+  .hour-section .time-mark { top: 60px; left: 24px; font-size: 10px; }
+  .hour-section .label { font-size: 16px; margin-bottom: 40px; }
+  .hour-section h2 { font-size: 22px; letter-spacing: 0.3em; padding-left: 0.3em; }
+  .hour-section p { font-size: 12px; }
+  .stream { gap: 16px; }
+  .stream .photo.s { width: 120px; }
+  .stream .photo.m { width: 60%; }
+  .stream .photo.l { width: 100%; }
+  .section-dawn { padding-top: 120px; padding-bottom: 120px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<div class="time-indicator">浮 ／ 一日の時間<span class="label">— 24h</span></div>
+
+<!-- 04:30 暁前 (Top-KV) -->
+<section class="hour-section section-dawn">
+  <div class="time-mark">04 : 30</div>
+  <div class="label">暁　前</div>
+  <h2>無慈悲なような、<br>希望のような朝</h2>
+  <p>視界の四隅が暗いまま、湯に浮く。<br>夜と朝の境目で、ふと光が差すのを待つ時間。</p>
+  <div class="stream">
+    <div class="photo dark portrait l">KV / 浮</div>
+    <div class="photo dark square s">影</div>
+  </div>
+</section>
+
+<!-- 06:00 朝光 (コンセプト) -->
+<section class="hour-section">
+  <div class="time-mark">06 : 00</div>
+  <div class="label">朝　光</div>
+  <h2>籠　る</h2>
+  <p>朝霧が抜けると、八幡野の森と海が、輪郭を取り戻していく。<br>建物のなかは、まだ暗い。</p>
+  <div class="stream">
+    <div class="photo mid portrait m">朝の光</div>
+    <div class="photo landscape s">森</div>
+  </div>
+</section>
+
+<!-- 12:00 正午 (ルーム) -->
+<section class="hour-section">
+  <div class="time-mark">12 : 00</div>
+  <div class="label">正　午</div>
+  <h2>客　室</h2>
+  <p>全7室、すべて露天風呂付き。<br>桃浮・紫浮・蝶浮・楊浮・啓浮・浮世・沙浮。<br>正午の柔らかな光が、それぞれの部屋に違う時間を作る。</p>
+  <div class="stream">
+    <div class="photo portrait s">桃浮</div>
+    <div class="photo portrait m">紫浮</div>
+    <div class="photo portrait s">浮世</div>
+  </div>
+</section>
+
+<!-- 18:00 夕暮 (体験) -->
+<section class="hour-section">
+  <div class="time-mark">18 : 00</div>
+  <div class="label">夕　暮</div>
+  <h2>体　験</h2>
+  <p>夕方、ミクニ伊豆高原での食卓へ。<br>戻ってきたら、もう一度、湯に浮く。<br>夜の灯りが、客室の輪郭だけを浮かび上がらせる。</p>
+  <div class="stream">
+    <div class="photo landscape l mid">ONSEN</div>
+    <div class="photo portrait s">夕暮</div>
+  </div>
+</section>
+
+<!-- 22:00 夜半 (ロケーション) -->
+<section class="hour-section section-dawn">
+  <div class="time-mark">22 : 00</div>
+  <div class="label">夜　半</div>
+  <h2>八幡野</h2>
+  <p>静岡県伊東市八幡野。<br>伊豆高原駅から車10分。東京から特急2時間。<br>夜、ここに着く頃には、もう日常が遠い。</p>
+  <div class="stream">
+    <div class="photo dark landscape m">夜の景色</div>
+    <div class="photo dark square s">月光</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>11. 時刻 — Hours</b><div class="axes">1日の時間軸でセクション化 ／ 暁前→朝光→正午→夕暮→夜半</div></div>
+</body>
+</html>
