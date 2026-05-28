@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>体験｜浮 -uki- ／ 03. 入口分離 style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; color: var(--text); }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; color: var(--muted); }
+.nav-right { display: flex; gap: 28px; align-items: center; color: var(--muted); }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; cursor: pointer; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; color: var(--text); }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+
+/* Experience ページ専用 — 入口分離 style: シンプル・contained・グリッド */
+.page-head { padding: 180px 0 80px; text-align: center; }
+.page-head h1 { font-family: "Noto Serif JP", serif; font-size: 36px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.page-head .en { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-top: 16px; }
+
+.exp-grid { display: grid; grid-template-columns: repeat(2, 360px); gap: 100px 80px; justify-content: center; padding: 80px 40px 120px; }
+.exp-card { text-align: center; }
+.exp-card .photo { width: 360px; margin: 0 auto 32px; }
+.exp-card h3 { font-family: "Noto Serif JP", serif; font-size: 28px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 12px; }
+.exp-card .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-bottom: 20px; display: block; }
+.exp-card p { font-size: 12px; color: var(--muted); max-width: 300px; margin: 0 auto; line-height: 2.2; }
+
+.detail-block { padding: 80px 80px 120px; max-width: 720px; margin: 0 auto; border-top: 1px solid #ece9e3; }
+.detail-block table { width: 100%; font-size: 11px; }
+.detail-block th { text-align: left; padding: 16px 24px; color: var(--soft); font-weight: 400; font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; width: 30%; }
+.detail-block td { padding: 16px 24px; color: var(--text); }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<section class="page-head">
+  <h1>体　験</h1>
+  <span class="en">EXPERIENCE</span>
+</section>
+
+<section class="exp-grid">
+  <div class="exp-card">
+    <div class="photo dark portrait">YU</div>
+    <h3>湯</h3>
+    <div class="romaji">HOT SPRING</div>
+    <p>源泉かけ流し。<br>全客室に専用露天風呂。</p>
+  </div>
+  <div class="exp-card">
+    <div class="photo mid portrait">SHOKU</div>
+    <h3>食</h3>
+    <div class="romaji">DINING</div>
+    <p>ミクニ伊豆高原と提携。<br>送迎付き／予約代行。</p>
+  </div>
+  <div class="exp-card">
+    <div class="photo portrait">SHIZEN</div>
+    <h3>自　然</h3>
+    <div class="romaji">NATURE</div>
+    <p>八幡野の森と海。<br>伊豆高原ジオパーク。</p>
+  </div>
+  <div class="exp-card">
+    <div class="photo dark portrait">TOKI</div>
+    <h3>時</h3>
+    <div class="romaji">TIME</div>
+    <p>無慈悲なような朝、<br>籠るような夜。</p>
+  </div>
+</section>
+
+<section class="detail-block">
+  <table>
+    <tr><th>BATH</th><td>各室 露天風呂付き / 源泉かけ流し / 24時間入浴可</td></tr>
+    <tr><th>DINNER</th><td>ミクニ伊豆高原と提携 / 宿から車7分 / 送迎付き</td></tr>
+    <tr><th>BREAKFAST</th><td>素泊まり前提 / 朝食バー</td></tr>
+    <tr><th>NATURE</th><td>伊豆高原ジオパーク / 散策路（地図はチェックイン時）</td></tr>
+    <tr><th>SILENCE</th><td>客室にテレビなし / 音楽なし</td></tr>
+  </table>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>experience / 03 入口分離 style</b></div>
+</body>
+</html>

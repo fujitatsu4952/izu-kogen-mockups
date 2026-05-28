@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>体験｜浮 -uki- ／ 01. 静謐ミニマル style</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+
+footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+
+/* Experience ページ専用 — 静謐ミニマル style */
+.page-head { padding: 200px 80px 100px; text-align: center; }
+.page-head h1 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.page-head .en { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-top: 16px; }
+.page-head p { font-size: 13px; color: var(--muted); margin: 60px auto 0; max-width: 480px; line-height: 2.4; }
+
+.exp-anchors { display: flex; justify-content: center; gap: 40px; padding: 0 0 120px; flex-wrap: wrap; }
+.exp-anchors a { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.4em; color: var(--muted); padding-left: 0.4em; }
+.exp-anchors a:hover { color: var(--text); }
+
+.exp-section { padding: 140px 80px; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 420px 1fr; gap: 100px; align-items: start; }
+.exp-section.flip { grid-template-columns: 1fr 420px; }
+.exp-section.flip > .photos { order: 2; }
+.exp-section .photos { display: flex; flex-direction: column; gap: 16px; }
+.exp-section .photos .photo { width: 100%; }
+.exp-section .name { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; padding-left: 0.5em; writing-mode: vertical-rl; height: 4em; margin-bottom: 8px; }
+.exp-section .en-label { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin: 80px 0 32px; }
+.exp-section .lead { font-size: 14px; line-height: 2.6; max-width: 480px; margin-bottom: 32px; }
+.exp-section .body { font-size: 13px; line-height: 2.4; color: var(--muted); max-width: 480px; margin-bottom: 40px; }
+.exp-section .meta { font-size: 11px; line-height: 2.2; border-top: 1px solid #ece9e3; padding-top: 24px; max-width: 480px; }
+.exp-section .meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 12px; }
+.exp-section .meta dd { color: var(--text); }
+
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<section class="page-head">
+  <h1>体　験</h1>
+  <span class="en">EXPERIENCE</span>
+  <p>湯に浮き、食を待ち、八幡野の自然を眺める。<br>朝と夜の境目が、ここでは静かに移ろっていく。</p>
+</section>
+
+<nav class="exp-anchors">
+  <a href="#yu">湯</a>
+  <a href="#shoku">食</a>
+  <a href="#shizen">自然</a>
+  <a href="#toki">時</a>
+</nav>
+
+<section class="exp-section" id="yu">
+  <div class="photos">
+    <div class="photo dark portrait">YU 1</div>
+    <div class="photo mid portrait">YU 2</div>
+  </div>
+  <div class="info">
+    <div class="name">湯</div>
+    <span class="en-label">HOT SPRING ／ ONSEN</span>
+    <p class="lead">源泉かけ流し。<br>眠る前と、目覚める前に、湯に浮く。</p>
+    <p class="body">客室それぞれに露天風呂を備えた、7つの湯。源泉かけ流しのため、一日のどの時間でも、湯の香りが変わる。湯に浮くと、外界の重さが消える。「浮」という宿名は、この瞬間の感覚から取られている。</p>
+    <dl class="meta">
+      <dt>SPRING</dt><dd>源泉かけ流し（温泉権利5口）</dd>
+      <dt>BATH</dt><dd>全客室に専用露天風呂</dd>
+      <dt>TIME</dt><dd>24時間入浴可能</dd>
+      <dt>STYLE</dt><dd>大浴場なし／客室の湯のみ</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="exp-section flip" id="shoku">
+  <div class="photos">
+    <div class="photo mid portrait">SHOKU 1</div>
+    <div class="photo dark portrait">SHOKU 2</div>
+  </div>
+  <div class="info">
+    <div class="name">食</div>
+    <span class="en-label">DINING ／ MIKUNI</span>
+    <p class="lead">ミクニ伊豆高原での、ひと夜の食卓。<br>朝は素泊まり前提の、静かな食卓。</p>
+    <p class="body">夕食は、隈研吾設計・三國清三プロデュースのレストラン「ミクニ伊豆高原」と提携。宿から車で7分、宿が送迎と予約代行を行う。コースの精算は宿で完結する。朝は、湯気の立つコーヒーと、簡素なパンと果物だけの食卓。</p>
+    <dl class="meta">
+      <dt>DINNER</dt><dd>ミクニ伊豆高原と提携（外食型）</dd>
+      <dt>TRANSFER</dt><dd>宿から車7分／送迎付き</dd>
+      <dt>RESERVATION</dt><dd>宿経由で予約代行</dd>
+      <dt>BREAKFAST</dt><dd>素泊まり前提／朝食バー</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="exp-section" id="shizen">
+  <div class="photos">
+    <div class="photo portrait">SHIZEN 1</div>
+    <div class="photo dark portrait">SHIZEN 2</div>
+  </div>
+  <div class="info">
+    <div class="name">自然</div>
+    <span class="en-label">NATURE ／ YAWATANO</span>
+    <p class="lead">八幡野の森と海。<br>朝霧と夕暮れだけが、時間の境目を知らせる。</p>
+    <p class="body">伊豆半島東岸、八幡野の高台に位置する。窓の外には森が広がり、その奥に海の気配を感じる。伊豆高原ジオパークの一部であり、四季ごとに表情を変える。歩いて行ける散策路もあるが、宿のなかで動かない時間も、ここでは贅沢になる。</p>
+    <dl class="meta">
+      <dt>LOCATION</dt><dd>静岡県伊東市八幡野</dd>
+      <dt>SURROUND</dt><dd>森／海／伊豆高原ジオパーク</dd>
+      <dt>SEASON</dt><dd>春の山桜／秋の紅葉／冬の澄んだ空</dd>
+      <dt>WALK</dt><dd>散策路あり（地図はチェックイン時）</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="exp-section flip" id="toki">
+  <div class="photos">
+    <div class="photo dark portrait">TOKI 1</div>
+    <div class="photo dark portrait">TOKI 2</div>
+  </div>
+  <div class="info">
+    <div class="name">時</div>
+    <span class="en-label">TIME ／ MORNING & NIGHT</span>
+    <p class="lead">無慈悲なような、希望のような朝。<br>そして、籠るような、夜。</p>
+    <p class="body">「浮」が最も語るのは、朝と夜の境目。日の出の30分前、視界の四隅が暗いまま、湯に浸かる時間。夕暮れ、空が紫に染まり、客室の灯りだけが残る時間。これらは仕掛けではなく、宿の場所と建物が自然に作り出す時間。</p>
+    <dl class="meta">
+      <dt>MORNING</dt><dd>日の出±30分の湯</dd>
+      <dt>NIGHT</dt><dd>夜灯り／月光／籠る時間</dd>
+      <dt>SILENCE</dt><dd>テレビなし／音楽なし</dd>
+      <dt>NOTE</dt><dd>過ごし方は、それぞれに委ねる</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>experience / 01 静謐ミニマル style</b></div>
+</body>
+</html>
