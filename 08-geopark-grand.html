@@ -51,11 +51,9 @@ footer { padding: 100px 44px 60px; border-top: 1px solid #eee; margin-top: 180px
 .variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
 
 
-.hero { padding: 160px 4vw 80px; }
-.hero .photo { width: 96vw; max-width: none; margin-left: calc(-48vw + 50%); height: 85vh; }
-.hero-caption { padding: 60px 100px 0; display: flex; justify-content: space-between; align-items: flex-end; max-width: 1400px; margin: 0 auto; }
-.hero-caption h1 { font-family: "Noto Serif JP", serif; font-size: 40px; letter-spacing: 0.5em; padding-left: 0.5em; }
-.hero-caption small { font-size: 13px; color: var(--muted); letter-spacing: 0.3em; }
+.hero { padding: 280px 0 240px; text-align: center; }
+.hero h1 { font-family: "Noto Serif JP", serif; font-size: 72px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.hero-photo { margin: 180px auto 0; width: 560px; }
 
 .concept { padding: 240px 100px; text-align: center; max-width: 880px; margin: 0 auto; }
 .concept h2 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 80px; line-height: 1.8; }
@@ -86,11 +84,9 @@ section.cards { padding: 140px 100px 240px; display: grid; grid-template-columns
 
 
 @media (max-width: 768px) {
-  .hero { padding: 100px 0 40px; }
-  .hero .photo { width: 100vw; margin-left: -24px; height: 60vh; }
-  .hero-caption { padding: 24px 24px 0; flex-direction: column; gap: 16px; align-items: flex-start; }
-  .hero-caption h1 { font-size: 26px; letter-spacing: 0.3em; padding-left: 0.3em; }
-  .hero-caption small { font-size: 10px; letter-spacing: 0.2em; }
+  .hero { padding: 160px 24px 120px; }
+  .hero h1 { font-size: 44px; letter-spacing: 0.3em; padding-left: 0.3em; }
+  .hero-photo { margin: 100px auto 0; width: 70%; max-width: 300px; }
   .concept { padding: 120px 24px; }
   .concept h2 { font-size: 22px; letter-spacing: 0.3em; line-height: 1.8; }
   .concept p { font-size: 12px; }
@@ -118,11 +114,8 @@ section.cards { padding: 140px 100px 240px; display: grid; grid-template-columns
 
 <!-- 1. Top-KV -->
 <section class="hero">
-  <div class="photo wide mid">KV</div>
-  <div class="hero-caption">
-    <h1>浮　— 伊豆高原 八幡野</h1>
-    <small>UKI / PRIVATE ONSEN / 7 ROOMS / 2026.9 OPEN</small>
-  </div>
+  <h1>浮</h1>
+  <div class="hero-photo"><div class="photo portrait">KV</div></div>
 </section>
 
 <!-- 2. コンセプト -->
