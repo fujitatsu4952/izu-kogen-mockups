@@ -56,9 +56,11 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
 
 
-.hero { padding: 240px 0 200px; text-align: center; }
-.hero h1 { font-family: "Noto Serif JP", serif; font-size: 56px; letter-spacing: 0.5em; padding-left: 0.5em; }
-.hero-photo { margin: 140px auto 0; width: 460px; }
+.hero { padding: 120px 5vw 60px; }
+.hero .photo { width: 90vw; max-width: none; margin-left: calc(-45vw + 50%); height: 70vh; }
+.hero-caption { padding: 40px 80px 0; display: flex; justify-content: space-between; align-items: flex-end; }
+.hero-caption h1 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.4em; }
+.hero-caption small { font-size: 12px; color: var(--muted); letter-spacing: 0.25em; }
 
 .concept { padding: 180px 80px; text-align: center; max-width: 720px; margin: 0 auto; }
 .concept h2 { font-family: "Noto Serif JP", serif; font-size: 24px; letter-spacing: 0.4em; margin-bottom: 60px; line-height: 1.8; }
@@ -88,9 +90,11 @@ section.cards { padding: 100px 80px 180px; display: grid; grid-template-columns:
 .location-meta dd { color: var(--text); margin-top: 4px; }
 
 @media (max-width: 768px) {
-  .hero { padding: 140px 24px 100px; }
-  .hero h1 { font-size: 36px; letter-spacing: 0.3em; padding-left: 0.3em; }
-  .hero-photo { margin: 80px auto 0; width: 70%; max-width: 280px; }
+  .hero { padding: 100px 0 40px; }
+  .hero .photo { width: 100vw; margin-left: -24px; height: 50vh; }
+  .hero-caption { padding: 24px 24px 0; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .hero-caption h1 { font-size: 22px; letter-spacing: 0.3em; }
+  .hero-caption small { font-size: 10px; letter-spacing: 0.2em; }
   .concept { padding: 100px 24px; }
   .concept h2 { font-size: 20px; letter-spacing: 0.3em; line-height: 1.8; }
   .concept p { font-size: 12px; }
@@ -115,8 +119,11 @@ section.cards { padding: 100px 80px 180px; display: grid; grid-template-columns:
 
 <!-- 1. Top-KV -->
 <section class="hero">
-  <h1>浮</h1>
-  <div class="hero-photo"><div class="photo portrait">KV</div></div>
+  <div class="photo wide mid">KV</div>
+  <div class="hero-caption">
+    <h1>浮　— 伊豆高原 八幡野</h1>
+    <small>UKI / PRIVATE ONSEN / 7 ROOMS / 2026.9 OPEN</small>
+  </div>
 </section>
 
 <!-- 2. コンセプト -->
