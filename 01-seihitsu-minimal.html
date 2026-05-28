@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>01. 静謐ミニマル｜伊豆高原 mockup</title>
+<title>01. 静謐ミニマル｜浮 -uki- mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
@@ -28,7 +28,8 @@ a { color: inherit; text-decoration: none; }
 
 /* グローバルナビ */
 .nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
-.nav-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; }
 .nav-right { display: flex; gap: 28px; align-items: center; }
 .menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
 .reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
@@ -45,7 +46,8 @@ a { color: inherit; text-decoration: none; }
 /* フッター */
 footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
-.footer-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
 
 /* バリアントラベル */
 .variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
@@ -57,44 +59,122 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .hero-text { writing-mode: vertical-rl; font-family: "Noto Serif JP", serif; font-size: 28px; line-height: 2.2; letter-spacing: 0.3em; align-self: center; justify-self: end; }
 .hero-text small { font-size: 12px; color: var(--muted); letter-spacing: 0.2em; }
 .hero-photo { width: 60%; max-width: 380px; justify-self: center; }
+
 section { padding: 160px 80px; max-width: 900px; margin: 0 auto; }
+
 .concept { text-align: center; }
 .concept h2 { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.4em; margin-bottom: 60px; }
 .concept p { font-size: 13px; max-width: 480px; margin: 0 auto; line-height: 2.4; }
+
+.section-head { text-align: center; margin-bottom: 100px; }
+.section-head .ja { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.4em; }
+.section-head .en { display: block; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-top: 12px; }
+.section-head .lead { font-size: 12px; color: var(--muted); margin-top: 32px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 2.2; }
+
 .rooms { display: flex; flex-direction: column; gap: 140px; align-items: center; }
 .room { display: flex; align-items: flex-end; gap: 60px; width: 100%; }
 .room .photo { width: 380px; flex-shrink: 0; }
 .room-meta h3 { font-family: "Noto Serif JP", serif; font-size: 16px; letter-spacing: 0.3em; margin-bottom: 14px; }
 .room-meta p { font-size: 12px; color: var(--muted); max-width: 280px; }
+.rooms-note { text-align: center; margin-top: 80px; font-size: 11px; color: var(--soft); letter-spacing: 0.2em; font-family: "Lato", sans-serif; }
+
+.experience { display: flex; flex-direction: column; gap: 100px; }
+.exp-item { display: grid; grid-template-columns: 80px 1fr; gap: 80px; align-items: start; }
+.exp-item .label { font-family: "Noto Serif JP", serif; font-size: 20px; letter-spacing: 0.4em; writing-mode: vertical-rl; height: 5em; }
+.exp-item .body { font-size: 13px; color: var(--text); line-height: 2.2; max-width: 520px; }
+.exp-item .body small { display: block; font-size: 10px; color: var(--soft); margin-top: 16px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.location { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.location .photo { width: 100%; }
+.location-meta h3 { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.4em; margin-bottom: 40px; }
+.location-meta p { font-size: 13px; color: var(--text); line-height: 2.2; max-width: 360px; }
+.location-meta dl { margin-top: 40px; font-size: 12px; }
+.location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 16px; }
+.location-meta dd { color: var(--text); margin-top: 4px; }
 
 </style>
 </head>
 <body>
 <nav class="nav">
-  <div class="nav-logo">IZU・KOGEN</div>
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
   <div class="nav-right">
     <span class="menu-btn">MENU</span>
     <span class="reserve-btn">RESERVE</span>
   </div>
 </nav>
 
+<!-- 1. Top-KV -->
 <section class="hero">
-  <div class="hero-photo"><div class="photo dark portrait">ROOM</div></div>
-  <div class="hero-text">無慈悲なような、<br>希望のような朝<br><br><small>HOTEL IZU KOGEN</small></div>
+  <div class="hero-photo"><div class="photo dark portrait">KV</div></div>
+  <div class="hero-text">無慈悲なような、<br>希望のような朝<br><br><small>浮 -uki-</small></div>
 </section>
+
+<!-- 2. コンセプト -->
 <section class="concept">
   <h2>籠　る</h2>
   <p>視界の四隅が暗く、外界から閉ざされた朝。<br>そのなかで、ふと光が差す。</p>
 </section>
-<section class="rooms">
-  <div class="room"><div class="photo dark portrait">ROOM A</div><div class="room-meta"><h3>朝　ASA</h3><p>東向き露天風呂付き。陽の差し込みで時間を知る部屋。</p></div></div>
-  <div class="room"><div class="photo mid portrait">ROOM B</div><div class="room-meta"><h3>霧　KIRI</h3><p>森に面した落ち着く一室。雨の日が美しい。</p></div></div>
-  <div class="room"><div class="photo dark portrait">ROOM C</div><div class="room-meta"><h3>燈　TOMOSHIBI</h3><p>夜の灯りに沈む、最も静かな部屋。</p></div></div>
+
+<!-- 3. ルーム -->
+<section>
+  <div class="section-head">
+    <div class="ja">客　室</div>
+    <div class="en">ROOMS</div>
+    <p class="lead">全7室、すべて露天風呂付き。<br>それぞれの部屋に、それぞれの時間が流れる。</p>
+  </div>
+  <div class="rooms">
+    <div class="room"><div class="photo dark portrait">桃浮</div><div class="room-meta"><h3>桃浮　Momouki</h3><p>東向き露天風呂付き。陽の差し込みで時間を知る部屋。</p></div></div>
+    <div class="room"><div class="photo mid portrait">紫浮</div><div class="room-meta"><h3>紫浮　Shiuki</h3><p>森に面した落ち着く一室。雨の日が美しい。</p></div></div>
+    <div class="room"><div class="photo dark portrait">浮世</div><div class="room-meta"><h3>浮世　Ukiyo</h3><p>夜の灯りに沈む、最も静かな部屋。</p></div></div>
+  </div>
+  <div class="rooms-note">— 全 7 室：桃浮 ・ 紫浮 ・ 蝶浮 ・ 楊浮 ・ 啓浮 ・ 浮世 ・ 沙浮 —</div>
+</section>
+
+<!-- 4. 体験 -->
+<section>
+  <div class="section-head">
+    <div class="ja">体　験</div>
+    <div class="en">EXPERIENCE</div>
+  </div>
+  <div class="experience">
+    <div class="exp-item">
+      <div class="label">温　泉</div>
+      <div class="body">源泉かけ流し。眠る前と、目覚める前に。<br>湯に浮く、その時間だけが、時間を進める。<br><small>HOT SPRING</small></div>
+    </div>
+    <div class="exp-item">
+      <div class="label">自　然</div>
+      <div class="body">八幡野の森と海。<br>朝霧と夕暮れだけが、時間の境目を知らせる。<br><small>NATURE</small></div>
+    </div>
+    <div class="exp-item">
+      <div class="label">食</div>
+      <div class="body">ミクニ伊豆高原のディナーを、宿泊と組み合わせて。<br>朝は素泊まり前提のシンプルな朝食卓。<br><small>DINING</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ロケーション -->
+<section>
+  <div class="section-head">
+    <div class="ja">場　所</div>
+    <div class="en">LOCATION</div>
+  </div>
+  <div class="location">
+    <div><div class="photo mid portrait">MAP</div></div>
+    <div class="location-meta">
+      <h3>八幡野</h3>
+      <p>静岡県伊東市八幡野。<br>伊豆高原駅から車で約10分、東京から特急で約2時間。</p>
+      <dl>
+        <dt>ADDRESS</dt><dd>静岡県伊東市八幡野</dd>
+        <dt>TRAIN</dt><dd>JR伊豆高原駅より車10分</dd>
+        <dt>OPEN</dt><dd>2026.9</dd>
+      </dl>
+    </div>
+  </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">伊豆高原</div>
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
     <div>
       <div>静岡県伊東市八幡野</div>
       <div>2026.9 OPEN</div>

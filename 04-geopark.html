@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>04. ジオパーク｜伊豆高原 mockup</title>
+<title>04. ジオパーク｜浮 -uki- mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="palette-switcher.css">
@@ -28,7 +28,8 @@ a { color: inherit; text-decoration: none; }
 
 /* グローバルナビ */
 .nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
-.nav-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; }
 .nav-right { display: flex; gap: 28px; align-items: center; }
 .menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
 .reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
@@ -45,7 +46,8 @@ a { color: inherit; text-decoration: none; }
 /* フッター */
 footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px; }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
-.footer-logo { font-family: "Noto Serif JP", serif; font-size: 14px; letter-spacing: 0.3em; color: var(--text); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
 
 /* バリアントラベル */
 .variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
@@ -56,40 +58,98 @@ footer { padding: 80px 44px 40px; border-top: 1px solid #eee; margin-top: 120px;
 .hero { padding: 120px 5vw 60px; }
 .hero .photo { width: 90vw; max-width: none; margin-left: calc(-45vw + 50%); height: 70vh; }
 .hero-caption { padding: 40px 80px 0; display: flex; justify-content: space-between; align-items: flex-end; }
-.hero-caption h1 { font-family: "Noto Serif JP", serif; font-size: 28px; letter-spacing: 0.3em; }
-.hero-caption small { font-size: 12px; color: var(--muted); letter-spacing: 0.2em; }
-section.cards { padding: 160px 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; max-width: 1200px; margin: 0 auto; }
+.hero-caption h1 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.4em; }
+.hero-caption small { font-size: 12px; color: var(--muted); letter-spacing: 0.25em; }
+
+.concept { padding: 180px 80px; text-align: center; max-width: 720px; margin: 0 auto; }
+.concept h2 { font-family: "Noto Serif JP", serif; font-size: 24px; letter-spacing: 0.4em; margin-bottom: 60px; line-height: 1.8; }
+.concept p { font-size: 13px; line-height: 2.4; }
+
+section.cards { padding: 100px 80px 180px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; max-width: 1300px; margin: 0 auto; }
 .card .photo { width: 100%; }
-.card h3 { font-family: "Noto Serif JP", serif; font-size: 16px; letter-spacing: 0.3em; margin-top: 24px; }
-.card p { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.card h3 { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.4em; margin-top: 28px; }
+.card .en { display: block; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-top: 8px; }
+.card p { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 2; }
+.card small { display: block; margin-top: 16px; font-size: 10px; color: var(--soft); letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+
+.rooms-list { padding: 0 80px 180px; text-align: center; }
+.rooms-list h3 { font-family: "Noto Serif JP", serif; font-size: 16px; letter-spacing: 0.3em; margin-bottom: 24px; color: var(--muted); }
+.rooms-list .names { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.5em; line-height: 2.6; }
+.rooms-list .names span { display: inline-block; padding: 0 8px; }
+
+.location { padding: 0 80px 180px; max-width: 1100px; margin: 0 auto; }
+.location .head { text-align: center; margin-bottom: 80px; }
+.location .head h2 { font-family: "Noto Serif JP", serif; font-size: 24px; letter-spacing: 0.4em; }
+.location .head .en { display: block; font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.3em; color: var(--soft); margin-top: 12px; }
+.location .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.location .photo { width: 100%; }
+.location-meta p { font-size: 13px; line-height: 2.2; max-width: 360px; }
+.location-meta dl { margin-top: 40px; font-size: 12px; }
+.location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 16px; }
+.location-meta dd { color: var(--text); margin-top: 4px; }
 
 </style>
 </head>
 <body>
 <nav class="nav">
-  <div class="nav-logo">IZU・KOGEN</div>
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
   <div class="nav-right">
     <span class="menu-btn">MENU</span>
     <span class="reserve-btn">RESERVE</span>
   </div>
 </nav>
 
+<!-- 1. Top-KV -->
 <section class="hero">
-  <div class="photo wide mid">NATURE</div>
+  <div class="photo wide mid">KV</div>
   <div class="hero-caption">
-    <h1>伊豆 高原　— 八幡野</h1>
-    <small>HOTEL WITH PRIVATE ONSEN / 7 ROOMS / 2026.9 OPEN</small>
+    <h1>浮　— 伊豆高原 八幡野</h1>
+    <small>UKI / PRIVATE ONSEN / 7 ROOMS / 2026.9 OPEN</small>
   </div>
 </section>
+
+<!-- 2. コンセプト -->
+<section class="concept">
+  <h2>無慈悲なような、<br>希望のような朝</h2>
+  <p>視界の四隅が暗く、外界から閉ざされた朝。<br>そのなかで、ふと光が差す。<br>湯に浮いて、日常から離れる。</p>
+</section>
+
+<!-- 3. ルーム + 4. 体験 + 5. ロケーション をカードで -->
 <section class="cards">
-  <div class="card"><div class="photo portrait">ROOMS</div><h3>客 室</h3><p>露天風呂付き7室</p></div>
-  <div class="card"><div class="photo portrait">ONSEN</div><h3>温 泉</h3><p>源泉かけ流し</p></div>
-  <div class="card"><div class="photo portrait">DINING</div><h3>食 事</h3><p>ミクニ伊豆高原と提携</p></div>
+  <div class="card">
+    <div class="photo portrait">桃浮</div>
+    <h3>客　室</h3>
+    <span class="en">ROOMS</span>
+    <p>全7室、すべて露天風呂付き。<br>一室ごとに、流れる時間が違う。</p>
+    <small>VIEW ROOMS →</small>
+  </div>
+  <div class="card">
+    <div class="photo portrait">ONSEN</div>
+    <h3>体　験</h3>
+    <span class="en">EXPERIENCE</span>
+    <p>源泉かけ流しの温泉。<br>八幡野の自然。<br>ミクニ伊豆高原との食事提携。</p>
+    <small>VIEW EXPERIENCE →</small>
+  </div>
+  <div class="card">
+    <div class="photo portrait">MAP</div>
+    <h3>場　所</h3>
+    <span class="en">LOCATION</span>
+    <p>静岡県伊東市八幡野。<br>伊豆高原駅から車10分、東京から特急2時間。</p>
+    <small>VIEW LOCATION →</small>
+  </div>
+</section>
+
+<!-- 7室の名前リスト -->
+<section class="rooms-list">
+  <h3>全 7 室</h3>
+  <div class="names">
+    <span>桃浮</span><span>紫浮</span><span>蝶浮</span><span>楊浮</span><span>啓浮</span><span>浮世</span><span>沙浮</span>
+  </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">伊豆高原</div>
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
     <div>
       <div>静岡県伊東市八幡野</div>
       <div>2026.9 OPEN</div>
