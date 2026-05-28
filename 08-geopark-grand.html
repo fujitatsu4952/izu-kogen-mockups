@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>08. ジオパーク+｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root {
+  --bg: #FAFAF7;
+  --text: #333333;
+  --muted: #666666;
+  --soft: #AEACAC;
+  --accent: #8C8578;
+  --dark: #222222;
+  --photo-light: #d8d3cb;
+  --photo-mid: #8a857c;
+  --photo-dark: #3a3631;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: var(--bg); color: var(--text); font-family: "Noto Sans JP", "Hiragino Sans", sans-serif; font-weight: 300; line-height: 1.9; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif; }
+.lato { font-family: "Lato", sans-serif; letter-spacing: 0.08em; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; padding: 28px 44px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: var(--bg); }
+.nav-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; display: flex; align-items: baseline; gap: 8px; }
+.nav-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; font-weight: 300; }
+.nav-right { display: flex; gap: 28px; align-items: center; }
+.menu-btn { font-size: 11px; letter-spacing: 0.25em; font-family: "Lato", sans-serif; }
+.reserve-btn { padding: 8px 18px; border: 1px solid currentColor; font-size: 10px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.photo { background: var(--photo-light); display: flex; align-items: center; justify-content: center; color: rgba(0,0,0,0.25); font-size: 11px; letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+.photo.dark { background: var(--photo-dark); color: rgba(255,255,255,0.3); }
+.photo.mid { background: var(--photo-mid); color: rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio: 3 / 4; }
+.photo.landscape { aspect-ratio: 4 / 3; }
+.photo.wide { aspect-ratio: 16 / 9; }
+
+footer { padding: 100px 44px 60px; border-top: 1px solid #eee; margin-top: 180px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--muted); }
+.footer-logo { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.2em; color: var(--text); display: flex; align-items: baseline; gap: 8px; }
+.footer-logo .romaji { font-family: "Lato", sans-serif; font-size: 10px; letter-spacing: 0.25em; color: var(--muted); }
+
+.variant-tag { position: fixed; bottom: 20px; left: 20px; background: rgba(34,34,34,0.85); color: #fff; padding: 8px 14px; font-size: 10px; letter-spacing: 0.15em; font-family: "Lato", sans-serif; z-index: 200; max-width: 320px; line-height: 1.6; }
+.variant-tag b { font-weight: 600; }
+.variant-tag .axes { color: #c8c4bd; margin-top: 4px; font-size: 9px; }
+
+
+.hero { padding: 160px 4vw 80px; }
+.hero .photo { width: 96vw; max-width: none; margin-left: calc(-48vw + 50%); height: 85vh; }
+.hero-caption { padding: 60px 100px 0; display: flex; justify-content: space-between; align-items: flex-end; max-width: 1400px; margin: 0 auto; }
+.hero-caption h1 { font-family: "Noto Serif JP", serif; font-size: 40px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.hero-caption small { font-size: 13px; color: var(--muted); letter-spacing: 0.3em; }
+
+.concept { padding: 240px 100px; text-align: center; max-width: 880px; margin: 0 auto; }
+.concept h2 { font-family: "Noto Serif JP", serif; font-size: 32px; letter-spacing: 0.5em; padding-left: 0.5em; margin-bottom: 80px; line-height: 1.8; }
+.concept p { font-size: 14px; line-height: 2.6; }
+
+section.cards { padding: 140px 100px 240px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 100px; max-width: 1400px; margin: 0 auto; }
+.card .photo { width: 100%; }
+.card h3 { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.5em; padding-left: 0.5em; margin-top: 36px; }
+.card .en { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-top: 12px; }
+.card p { font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 2.2; }
+.card small { display: block; margin-top: 20px; font-size: 11px; color: var(--soft); letter-spacing: 0.3em; font-family: "Lato", sans-serif; }
+
+.rooms-list { padding: 0 100px 240px; text-align: center; }
+.rooms-list h3 { font-family: "Noto Serif JP", serif; font-size: 18px; letter-spacing: 0.3em; margin-bottom: 32px; color: var(--muted); }
+.rooms-list .names { font-family: "Noto Serif JP", serif; font-size: 22px; letter-spacing: 0.5em; line-height: 2.8; }
+.rooms-list .names span { display: inline-block; padding: 0 10px; }
+
+.location { padding: 0 100px 240px; max-width: 1300px; margin: 0 auto; }
+.location .head { text-align: center; margin-bottom: 100px; }
+.location .head h2 { font-family: "Noto Serif JP", serif; font-size: 28px; letter-spacing: 0.5em; padding-left: 0.5em; }
+.location .head .en { display: block; font-family: "Lato", sans-serif; font-size: 11px; letter-spacing: 0.3em; color: var(--soft); margin-top: 14px; }
+.location .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
+.location .photo { width: 100%; }
+.location-meta p { font-size: 14px; line-height: 2.4; max-width: 420px; }
+.location-meta dl { margin-top: 48px; font-size: 12px; }
+.location-meta dt { font-family: "Lato", sans-serif; letter-spacing: 0.25em; font-size: 9px; color: var(--soft); margin-top: 18px; }
+.location-meta dd { color: var(--text); margin-top: 4px; }
+
+
+@media (max-width: 768px) {
+  .hero { padding: 100px 0 40px; }
+  .hero .photo { width: 100vw; margin-left: -24px; height: 60vh; }
+  .hero-caption { padding: 24px 24px 0; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .hero-caption h1 { font-size: 26px; letter-spacing: 0.3em; padding-left: 0.3em; }
+  .hero-caption small { font-size: 10px; letter-spacing: 0.2em; }
+  .concept { padding: 120px 24px; }
+  .concept h2 { font-size: 22px; letter-spacing: 0.3em; line-height: 1.8; }
+  .concept p { font-size: 12px; }
+  section.cards { grid-template-columns: 1fr; gap: 80px; padding: 80px 24px 140px; }
+  .card h3 { font-size: 18px; letter-spacing: 0.3em; }
+  .card p { font-size: 12px; }
+  .rooms-list { padding: 0 24px 100px; }
+  .rooms-list .names { font-size: 16px; letter-spacing: 0.3em; line-height: 2.6; }
+  .rooms-list .names span { padding: 0 6px; }
+  .location { padding: 0 24px 100px; }
+  .location .head h2 { font-size: 22px; }
+  .location .grid { grid-template-columns: 1fr; gap: 40px; }
+  .location-meta p { font-size: 12px; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+
+<!-- 1. Top-KV -->
+<section class="hero">
+  <div class="photo wide mid">KV</div>
+  <div class="hero-caption">
+    <h1>浮　— 伊豆高原 八幡野</h1>
+    <small>UKI / PRIVATE ONSEN / 7 ROOMS / 2026.9 OPEN</small>
+  </div>
+</section>
+
+<!-- 2. コンセプト -->
+<section class="concept">
+  <h2>無慈悲なような、<br>希望のような朝</h2>
+  <p>視界の四隅が暗く、外界から閉ざされた朝。<br>そのなかで、ふと光が差す。<br>湯に浮いて、日常から離れる。</p>
+</section>
+
+<!-- 3. ルーム + 4. 体験 + 5. ロケーション をカードで -->
+<section class="cards">
+  <div class="card">
+    <div class="photo portrait">桃浮</div>
+    <h3>客　室</h3>
+    <span class="en">ROOMS</span>
+    <p>全7室、すべて露天風呂付き。<br>一室ごとに、流れる時間が違う。</p>
+    <a href="rooms-04.html"><small>VIEW ROOMS →</small></a>
+  </div>
+  <div class="card">
+    <div class="photo portrait">ONSEN</div>
+    <h3>体　験</h3>
+    <span class="en">EXPERIENCE</span>
+    <p>源泉かけ流しの温泉。<br>八幡野の自然。<br>ミクニ伊豆高原との食事提携。</p>
+    <a href="experience-04.html"><small>VIEW EXPERIENCE →</small></a>
+  </div>
+  <div class="card">
+    <div class="photo portrait">MAP</div>
+    <h3>場　所</h3>
+    <span class="en">LOCATION</span>
+    <p>静岡県伊東市八幡野。<br>伊豆高原駅から車10分、東京から特急2時間。</p>
+    <small>VIEW LOCATION →</small>
+  </div>
+</section>
+
+<!-- 7室の名前リスト -->
+<section class="rooms-list">
+  <h3>全 7 室</h3>
+  <div class="names">
+    <span>桃浮</span><span>紫浮</span><span>蝶浮</span><span>楊浮</span><span>啓浮</span><span>浮世</span><span>沙浮</span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.9 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>08. ジオパーク+</b><div class="axes">04の余白拡張・大判写真さらに大判 ／ Grand バリエーション</div></div>
+</body>
+</html>
