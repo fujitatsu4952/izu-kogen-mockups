@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>journal 04. 切り抜き — Clipping｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root { --bg:#FAFAF7; --text:#333333; --muted:#666666; --soft:#AEACAC; --accent:#8C8578; --dark:#222222; --photo-light:#d8d3cb; --photo-mid:#8a857c; --photo-dark:#3a3631; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP","Hiragino Sans",sans-serif; font-weight:300; line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+.nav { position:fixed; top:0; left:0; right:0; padding:28px 44px; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:difference; color:var(--bg); }
+.nav-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; display:flex; align-items:baseline; gap:8px; }
+.nav-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; }
+.nav-right { display:flex; gap:28px; align-items:center; }
+.menu-btn { font-size:11px; letter-spacing:0.25em; font-family:"Lato",sans-serif; }
+.reserve-btn { padding:8px 18px; border:1px solid currentColor; font-size:10px; letter-spacing:0.3em; font-family:"Lato",sans-serif; }
+.photo { background:var(--photo-light); display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.25); font-size:11px; letter-spacing:0.3em; font-family:"Lato",sans-serif; text-align:center; line-height:1.6; }
+.photo.dark { background:var(--photo-dark); color:rgba(255,255,255,0.3); }
+.photo.mid { background:var(--photo-mid); color:rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio:3/4; }
+.photo.tall { aspect-ratio:4/5; }
+.photo.landscape { aspect-ratio:4/3; }
+.photo.wide { aspect-ratio:16/9; }
+.photo.square { aspect-ratio:1/1; }
+footer { padding:80px 44px 40px; border-top:1px solid #eee; margin-top:120px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; font-size:11px; color:var(--muted); }
+.footer-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.footer-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--muted); }
+.variant-tag { position:fixed; bottom:20px; left:20px; background:rgba(34,34,34,0.85); color:#fff; padding:8px 14px; font-size:10px; letter-spacing:0.15em; font-family:"Lato",sans-serif; z-index:200; max-width:320px; line-height:1.6; }
+.variant-tag b { font-weight:600; }
+.variant-tag .axes { color:#c8c4bd; margin-top:4px; font-size:9px; }
+.label { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--soft); }
+.serif { font-family:"Noto Serif JP",serif; }
+/* 04 切り抜き: 机の上に雑誌の切り抜きとメモを置いたようなコラージュ。微回転・重なり・地図の断片。色は足さない */
+.desk { padding:140px 40px 120px; max-width:1300px; margin:0 auto; }
+.desk-head { text-align:center; margin-bottom:120px; }
+.desk-head h1 { font-family:"Noto Serif JP",serif; font-size:34px; letter-spacing:0.5em; padding-left:0.5em; font-weight:300; }
+.desk-head p { font-size:12px; color:var(--muted); line-height:2.3; max-width:420px; margin:24px auto 0; }
+.board { position:relative; height:1200px; }
+.clip { position:absolute; background:#fff; padding:12px 12px 16px; box-shadow:0 1px 2px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.05); }
+.clip .photo { width:100%; }
+.clip .cap { font-size:10px; letter-spacing:0.15em; color:var(--muted); margin-top:10px; display:flex; justify-content:space-between; }
+.clip .cap .name { font-family:"Noto Serif JP",serif; font-size:13px; letter-spacing:0.3em; color:var(--text); }
+.memo { position:absolute; font-family:"Noto Serif JP",serif; font-size:13px; line-height:2.3; letter-spacing:0.12em; color:var(--muted); max-width:260px; }
+.memo .label { display:block; margin-bottom:8px; }
+.memo.tate { writing-mode:vertical-rl; max-width:none; height:240px; font-size:16px; letter-spacing:0.3em; }
+.mapfrag { position:absolute; width:300px; height:220px; border:1px solid rgba(0,0,0,0.1); background:repeating-linear-gradient(0deg, transparent 0 26px, rgba(0,0,0,0.05) 26px 27px), repeating-linear-gradient(90deg, transparent 0 26px, rgba(0,0,0,0.05) 26px 27px), #fff; }
+.mapfrag .pin { position:absolute; width:6px; height:6px; border-radius:50%; background:var(--text); }
+.mapfrag .pin::after { content:attr(data-n); position:absolute; left:12px; top:-8px; font-family:"Lato",sans-serif; font-size:9px; letter-spacing:0.25em; white-space:nowrap; color:var(--muted); }
+.mapfrag .you { position:absolute; font-family:"Noto Serif JP",serif; font-size:12px; letter-spacing:0.2em; }
+.tag { position:absolute; font-family:"Lato",sans-serif; font-size:9px; letter-spacing:0.35em; color:var(--soft); }
+/* 配置 */
+.k1 { left:0; top:0; width:34%; transform:rotate(-1.2deg); }
+.k2 { left:40%; top:60px; width:26%; transform:rotate(1.6deg); }
+.k3 { right:0; top:0; width:28%; transform:rotate(-0.6deg); z-index:2; }
+.m1 { left:70%; top:400px; }
+.k4 { left:8%; top:520px; width:22%; transform:rotate(2deg); }
+.k5 { left:34%; top:460px; width:36%; transform:rotate(-0.8deg); z-index:1; }
+.mp1 { right:2%; top:560px; transform:rotate(1deg); }
+.m2 { left:2%; top:900px; }
+.k6 { left:30%; top:880px; width:20%; transform:rotate(1.2deg); }
+.k7 { left:54%; top:840px; width:24%; transform:rotate(-1.8deg); z-index:2; }
+.k8 { right:0; top:900px; width:22%; transform:rotate(0.9deg); }
+.t1 { left:36%; top:20px; }
+.t2 { right:6%; top:530px; }
+.board2 { position:relative; height:700px; margin-top:80px; }
+.k9 { left:4%; top:0; width:30%; transform:rotate(0.8deg); }
+.k10 { left:38%; top:120px; width:22%; transform:rotate(-1.4deg); }
+.m3 { right:4%; top:80px; }
+.k11 { right:10%; top:320px; width:24%; transform:rotate(1.5deg); }
+.m4 { left:6%; top:470px; }
+@media (max-width:768px) {
+  .desk { padding:100px 20px 60px; }
+  .desk-head { margin-bottom:60px; }
+  .desk-head h1 { font-size:24px; letter-spacing:0.3em; }
+  .board, .board2 { height:auto; display:flex; flex-direction:column; gap:36px; margin-top:0; }
+  .clip, .memo, .mapfrag, .tag { position:static; width:auto !important; max-width:none; height:auto; }
+  .clip { width:80% !important; }
+  .clip:nth-child(even) { align-self:flex-end; }
+  .memo.tate { writing-mode:horizontal-tb; font-size:14px; letter-spacing:0.15em; }
+  .mapfrag { height:200px; }
+  .tag { display:none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+<div class="desk">
+  <div class="desk-head">
+    <div class="label">JOURNAL ／ CLIPPINGS</div>
+    <h1 style="margin-top:20px;">机の上の周辺</h1>
+    <p>スタッフが歩いて集めてきた、周りの景色の切り抜き。順序はありません。気になったものから、出かけてください。</p>
+  </div>
+
+  <div class="board">
+    <span class="tag t1">— SPRING ／ AUTUMN</span>
+    <div class="clip k1"><div class="photo landscape mid">大室山 ／ 山焼きのあと</div><div class="cap"><span class="name">大室山</span><span>車12分</span></div></div>
+    <div class="clip k2"><div class="photo portrait dark">門脇吊橋</div><div class="cap"><span class="name">城ヶ崎海岸</span><span>徒歩25分</span></div></div>
+    <div class="clip k3"><div class="photo square">八幡野港 ／ 朝</div><div class="cap"><span class="name">八幡野港</span><span>徒歩15分</span></div></div>
+    <div class="memo m1"><span class="label">MEMO 01</span>朝、港から漁船が出ていく音が、林の奥まで届く。その音で目が覚めたら、歩いて港へ。</div>
+    <div class="clip k4"><div class="photo tall">対島の滝</div><div class="cap"><span class="name">対島の滝</span><span>雨のあと</span></div></div>
+    <div class="clip k5"><div class="photo wide mid">一碧湖 ／ 無風</div><div class="cap"><span class="name">一碧湖</span><span>車15分・周囲4km</span></div></div>
+    <span class="tag t2">— MAP FRAGMENT</span>
+    <div class="mapfrag mp1">
+      <div class="you" style="left:130px; top:96px;">浮</div>
+      <div class="pin" style="left:40px; top:30px;" data-n="OMURO"></div>
+      <div class="pin" style="left:230px; top:120px;" data-n="JOGASAKI"></div>
+      <div class="pin" style="left:150px; top:180px;" data-n="PORT"></div>
+      <div class="pin" style="left:60px; top:150px;" data-n="IPPEKI"></div>
+    </div>
+    <div class="memo m2 tate">四千年前の地面の上を歩く</div>
+    <div class="clip k6"><div class="photo portrait mid">蓮着寺 ／ 参道</div><div class="cap"><span class="name">蓮着寺</span><span>徒歩30分</span></div></div>
+    <div class="clip k7"><div class="photo landscape dark">赤沢 ／ 岩の海岸</div><div class="cap"><span class="name">赤沢海岸</span><span>車10分</span></div></div>
+    <div class="clip k8"><div class="photo square">桜並木 ／ 三月末</div><div class="cap"><span class="name">桜並木</span><span>駅から3km</span></div></div>
+  </div>
+
+  <div class="board2">
+    <div class="clip k9"><div class="photo wide mid">細野高原 ／ 十月</div><div class="cap"><span class="name">細野高原</span><span>車25分</span></div></div>
+    <div class="clip k10"><div class="photo portrait">大淀小淀 ／ 潮だまり</div><div class="cap"><span class="name">大淀小淀</span><span>徒歩35分</span></div></div>
+    <div class="memo m3"><span class="label">MEMO 02</span>細野高原は、風が通ると穂が同じ方向へ倒れる。十月の午後、穂が揃って光る時間がある。</div>
+    <div class="clip k11"><div class="photo square dark">橋立吊橋</div><div class="cap"><span class="name">橋立吊橋</span><span>徒歩40分</span></div></div>
+    <div class="memo m4"><span class="label">MEMO 03</span>どこへ行っても、帰る道は林に入る。松と雑木の間の別荘のひとつが、ukiになった。</div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.10 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>journal 04. 切り抜き — Clipping</b><div class="axes">机上コラージュ ／ 白フチ＋微回転＋重なり ／ 地図の断片・縦書きメモ ／ 色は足さない</div></div>
+</body>
+</html>

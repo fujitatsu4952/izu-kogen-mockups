@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>journal 02. 散らし — Scatter｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root { --bg:#FAFAF7; --text:#333333; --muted:#666666; --soft:#AEACAC; --accent:#8C8578; --dark:#222222; --photo-light:#d8d3cb; --photo-mid:#8a857c; --photo-dark:#3a3631; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP","Hiragino Sans",sans-serif; font-weight:300; line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+.nav { position:fixed; top:0; left:0; right:0; padding:28px 44px; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:difference; color:var(--bg); }
+.nav-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; display:flex; align-items:baseline; gap:8px; }
+.nav-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; }
+.nav-right { display:flex; gap:28px; align-items:center; }
+.menu-btn { font-size:11px; letter-spacing:0.25em; font-family:"Lato",sans-serif; }
+.reserve-btn { padding:8px 18px; border:1px solid currentColor; font-size:10px; letter-spacing:0.3em; font-family:"Lato",sans-serif; }
+.photo { background:var(--photo-light); display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.25); font-size:11px; letter-spacing:0.3em; font-family:"Lato",sans-serif; text-align:center; line-height:1.6; }
+.photo.dark { background:var(--photo-dark); color:rgba(255,255,255,0.3); }
+.photo.mid { background:var(--photo-mid); color:rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio:3/4; }
+.photo.tall { aspect-ratio:4/5; }
+.photo.landscape { aspect-ratio:4/3; }
+.photo.wide { aspect-ratio:16/9; }
+.photo.square { aspect-ratio:1/1; }
+footer { padding:80px 44px 40px; border-top:1px solid #eee; margin-top:120px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; font-size:11px; color:var(--muted); }
+.footer-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.footer-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--muted); }
+.variant-tag { position:fixed; bottom:20px; left:20px; background:rgba(34,34,34,0.85); color:#fff; padding:8px 14px; font-size:10px; letter-spacing:0.15em; font-family:"Lato",sans-serif; z-index:200; max-width:320px; line-height:1.6; }
+.variant-tag b { font-weight:600; }
+.variant-tag .axes { color:#c8c4bd; margin-top:4px; font-size:9px; }
+.label { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--soft); }
+.serif { font-family:"Noto Serif JP",serif; }
+/* 02 散らし: 12カラムグリッドの上で、写真の縦位置を意図的にずらす。キャプションは写真の脇に落ちる。詰めない */
+.scatter { padding:140px 60px 100px; max-width:1400px; margin:0 auto; }
+.g { display:grid; grid-template-columns:repeat(12,1fr); gap:24px; row-gap:0; }
+.item { display:flex; flex-direction:column; }
+.item .photo { width:100%; }
+.item .cap { display:flex; gap:16px; align-items:baseline; margin-top:14px; font-size:10px; letter-spacing:0.15em; color:var(--soft); }
+.item .cap .n { font-family:"Lato",sans-serif; letter-spacing:0.3em; color:var(--accent); }
+.item .cap .name { font-family:"Noto Serif JP",serif; font-size:14px; letter-spacing:0.3em; color:var(--text); }
+.item .cap.side { position:absolute; left:calc(100% + 20px); bottom:0; flex-direction:column; width:160px; margin:0; }
+.item.rel { position:relative; }
+.note { font-family:"Noto Serif JP",serif; font-size:14px; letter-spacing:0.15em; line-height:2.4; color:var(--muted); max-width:300px; align-self:center; }
+.note .label { display:block; margin-bottom:16px; }
+.head { grid-column:2 / span 10; padding:0 0 120px; display:flex; justify-content:space-between; align-items:flex-end; }
+.head h1 { font-family:"Noto Serif JP",serif; font-size:40px; font-weight:300; letter-spacing:0.5em; line-height:1.5; }
+.head p { font-size:12px; line-height:2.3; color:var(--muted); max-width:360px; }
+/* 配置（col / offset）。ランダムに見えるが、隣接同士の重心が揃わないように手で置く */
+.c1  { grid-column:1 / span 4; margin-top:0; }
+.c2  { grid-column:7 / span 5; margin-top:220px; }
+.c3  { grid-column:3 / span 3; margin-top:-60px; }
+.c4  { grid-column:8 / span 3; margin-top:160px; }
+.c5  { grid-column:1 / span 6; margin-top:200px; }
+.c6  { grid-column:9 / span 4; margin-top:40px; }
+.c7  { grid-column:5 / span 3; margin-top:260px; }
+.c8  { grid-column:9 / span 3; margin-top:140px; }
+.c9  { grid-column:2 / span 7; margin-top:220px; }
+.c10 { grid-column:10 / span 3; margin-top:-120px; }
+.c11 { grid-column:1 / span 3; margin-top:240px; }
+.c12 { grid-column:5 / span 5; margin-top:120px; }
+.n1  { grid-column:10 / span 3; margin-top:80px; }
+.n2  { grid-column:1 / span 3; margin-top:280px; }
+.n3  { grid-column:10 / span 3; margin-top:200px; }
+.end { grid-column:1 / span 12; text-align:center; padding-top:220px; }
+.end .serif { font-size:18px; letter-spacing:0.5em; color:var(--muted); }
+@media (max-width:768px) {
+  .scatter { padding:100px 24px 60px; }
+  .g { gap:16px; }
+  .head { grid-column:1 / span 12; flex-direction:column; align-items:flex-start; gap:20px; padding-bottom:60px; }
+  .head h1 { font-size:26px; letter-spacing:0.3em; }
+  .item, .note { margin-top:48px !important; }
+  .c1,.c5,.c9,.c12 { grid-column:1 / span 12; }
+  .c2,.c6 { grid-column:3 / span 10; }
+  .c3,.c7,.c11 { grid-column:1 / span 7; }
+  .c4,.c8,.c10 { grid-column:6 / span 7; }
+  .n1,.n2,.n3 { grid-column:2 / span 10; }
+  .item .cap.side { position:static; flex-direction:row; width:auto; margin-top:12px; }
+  .end { padding-top:100px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+<div class="scatter">
+<div class="g">
+  <div class="head">
+    <div><div class="label">JOURNAL</div><h1 style="margin-top:20px;">林の向こう</h1></div>
+    <p>山もあれば、海もある。そのどちらも、名前を大きく掲げることなく、林の向こうに静かにあります。ukiの周りを、順不同で。</p>
+  </div>
+
+  <div class="item c1"><div class="photo landscape mid">大室山 ／ 火口の縁</div><div class="cap"><span class="n">01</span><span class="name">大室山</span>車12分</div></div>
+  <div class="item c2 rel"><div class="photo portrait dark">城ヶ崎 ／ 門脇吊橋</div><div class="cap side"><span class="n">02</span><span class="name">城ヶ崎海岸</span><span>徒歩25分。黒い岩に波が砕ける</span></div></div>
+  <div class="item c3"><div class="photo square">八幡野港 ／ 斜路</div><div class="cap"><span class="n">03</span><span class="name">八幡野港</span>徒歩15分</div></div>
+
+  <div class="note n1"><span class="label">— ON WALKING</span>およそ四千年前、大室山の噴火が流した溶岩の上に、この台地はできました。歩くと、そのことがわかる道があります。</div>
+
+  <div class="item c4"><div class="photo tall mid">対島の滝</div><div class="cap"><span class="n">04</span><span class="name">対島の滝</span>雨のあとだけ</div></div>
+  <div class="item c5"><div class="photo wide">一碧湖 ／ 無風の朝</div><div class="cap"><span class="n">05</span><span class="name">一碧湖</span>車15分。周囲四キロ、一時間で一周</div></div>
+  <div class="item c6 rel"><div class="photo portrait">桜並木 ／ 三月末</div><div class="cap side"><span class="n">06</span><span class="name">伊豆高原 桜並木</span><span>駅から台地を上がる道、三キロ</span></div></div>
+
+  <div class="note n2"><span class="label">— ON MORNING</span>台地の南端、集落を抜けると、道は小さな漁港で海に突き当たります。朝、この港から漁船が出ていく音が、林の奥まで届きます。</div>
+
+  <div class="item c7"><div class="photo portrait dark">蓮着寺 ／ 参道</div><div class="cap"><span class="n">07</span><span class="name">蓮着寺</span>徒歩30分</div></div>
+  <div class="item c8"><div class="photo square mid">赤沢 ／ 岩の海岸</div><div class="cap"><span class="n">08</span><span class="name">赤沢海岸</span>車10分</div></div>
+  <div class="item c9"><div class="photo landscape mid">細野高原 ／ 十月のススキ</div><div class="cap"><span class="n">09</span><span class="name">細野高原</span>車25分。穂が同じ方向へ倒れる</div></div>
+  <div class="item c10"><div class="photo tall">大淀・小淀 ／ 潮だまり</div><div class="cap"><span class="n">10</span><span class="name">大淀小淀</span>徒歩35分</div></div>
+
+  <div class="note n3"><span class="label">— ON RETURN</span>どこへ行っても、帰る道は林に入ります。松と雑木の間に、昭和の頃からの別荘が点々と残っている。その一つが、ukiです。</div>
+
+  <div class="item c11"><div class="photo square dark">橋立吊橋</div><div class="cap"><span class="n">11</span><span class="name">橋立吊橋</span>徒歩40分</div></div>
+  <div class="item c12"><div class="photo landscape">八幡野の林 ／ 帰り道</div><div class="cap"><span class="n">12</span><span class="name">uki</span>ここへ戻る</div></div>
+
+  <div class="end"><div class="serif">順不同、季節不問。</div><div class="label" style="margin-top:16px;">TO BE CONTINUED</div></div>
+</div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.10 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>journal 02. 散らし — Scatter</b><div class="axes">12カラム上で縦位置を手動オフセット ／ キャプションは脇に落ちる ／ 3本の短文が写真の間に浮く</div></div>
+</body>
+</html>

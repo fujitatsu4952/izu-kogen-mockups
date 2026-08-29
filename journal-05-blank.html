@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>journal 05. 白紙 — Blank｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root { --bg:#FAFAF7; --text:#333333; --muted:#666666; --soft:#AEACAC; --accent:#8C8578; --dark:#222222; --photo-light:#d8d3cb; --photo-mid:#8a857c; --photo-dark:#3a3631; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP","Hiragino Sans",sans-serif; font-weight:300; line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+.nav { position:fixed; top:0; left:0; right:0; padding:28px 44px; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:difference; color:var(--bg); }
+.nav-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; display:flex; align-items:baseline; gap:8px; }
+.nav-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; }
+.nav-right { display:flex; gap:28px; align-items:center; }
+.menu-btn { font-size:11px; letter-spacing:0.25em; font-family:"Lato",sans-serif; }
+.reserve-btn { padding:8px 18px; border:1px solid currentColor; font-size:10px; letter-spacing:0.3em; font-family:"Lato",sans-serif; }
+.photo { background:var(--photo-light); display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.25); font-size:11px; letter-spacing:0.3em; font-family:"Lato",sans-serif; text-align:center; line-height:1.6; }
+.photo.dark { background:var(--photo-dark); color:rgba(255,255,255,0.3); }
+.photo.mid { background:var(--photo-mid); color:rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio:3/4; }
+.photo.tall { aspect-ratio:4/5; }
+.photo.landscape { aspect-ratio:4/3; }
+.photo.wide { aspect-ratio:16/9; }
+.photo.square { aspect-ratio:1/1; }
+footer { padding:80px 44px 40px; border-top:1px solid #eee; margin-top:120px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; font-size:11px; color:var(--muted); }
+.footer-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.footer-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--muted); }
+.variant-tag { position:fixed; bottom:20px; left:20px; background:rgba(34,34,34,0.85); color:#fff; padding:8px 14px; font-size:10px; letter-spacing:0.15em; font-family:"Lato",sans-serif; z-index:200; max-width:320px; line-height:1.6; }
+.variant-tag b { font-weight:600; }
+.variant-tag .axes { color:#c8c4bd; margin-top:4px; font-size:9px; }
+.label { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--soft); }
+.serif { font-family:"Noto Serif JP",serif; }
+/* 05 白紙: 写真ストリーム(17)の発展。1画面に1枚。画面のどこに置くかが毎回違う。余白が主役 */
+.blank { padding-top:120px; }
+.frame { min-height:100vh; position:relative; max-width:1400px; margin:0 auto; padding:0 60px; }
+.frame .photo { position:absolute; }
+.frame .txt { position:absolute; font-family:"Noto Serif JP",serif; font-size:14px; letter-spacing:0.2em; line-height:2.4; color:var(--muted); max-width:280px; }
+.frame .txt .name { display:block; font-size:20px; letter-spacing:0.4em; color:var(--text); margin-bottom:10px; }
+.frame .txt .label { display:block; margin-top:14px; }
+.frame .txt.tate { writing-mode:vertical-rl; max-width:none; font-size:18px; letter-spacing:0.35em; line-height:2.8; }
+.frame .big { position:absolute; font-family:"Noto Serif JP",serif; font-size:56px; font-weight:300; letter-spacing:0.5em; line-height:1.4; color:var(--text); }
+.frame .idx { position:absolute; font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.35em; color:var(--soft); }
+/* 開幕 */
+.f0 .big { left:60px; top:14vh; }
+.f0 .txt { right:60px; bottom:16vh; }
+/* 各フレームの位置 */
+.f1 .photo { left:60px; top:10vh; width:44%; }
+.f1 .txt { right:60px; top:52vh; }
+.f1 .idx { right:60px; top:10vh; }
+.f2 .photo { right:60px; top:6vh; width:30%; }
+.f2 .txt { left:60px; bottom:12vh; }
+.f2 .idx { left:60px; top:8vh; }
+.f3 .photo { left:50%; top:20vh; width:56%; transform:translateX(-50%); }
+.f3 .txt { left:60px; top:8vh; }
+.f3 .idx { right:60px; bottom:12vh; }
+.f4 .photo { left:60px; bottom:8vh; width:24%; }
+.f4 .txt.tate { right:120px; top:10vh; height:60vh; }
+.f4 .idx { left:60px; top:8vh; }
+.f5 .photo { right:60px; top:14vh; width:62%; }
+.f5 .txt { left:60px; bottom:14vh; }
+.f5 .idx { left:60px; top:14vh; }
+.f6 .photo { left:30%; top:6vh; width:26%; }
+.f6 .txt { right:60px; bottom:20vh; text-align:right; }
+.f6 .idx { left:60px; bottom:20vh; }
+.f7 .photo { left:60px; top:12vh; width:34%; }
+.f7 .photo.b { left:auto; right:60px; top:44vh; width:26%; }
+.f7 .txt { left:42%; top:16vh; }
+.f7 .idx { right:60px; top:12vh; }
+.fend { min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+.fend .serif { font-size:16px; letter-spacing:0.5em; color:var(--muted); }
+@media (max-width:768px) {
+  .blank { padding-top:90px; }
+  .frame { min-height:auto; padding:0 24px 80px; }
+  .frame .photo, .frame .txt, .frame .big, .frame .idx { position:static; transform:none; width:100% !important; max-width:none; height:auto; }
+  .frame .photo { margin-bottom:20px; }
+  .frame .photo.b { width:60% !important; margin-left:auto; margin-top:16px; }
+  .frame .txt.tate { writing-mode:horizontal-tb; font-size:14px; letter-spacing:0.2em; line-height:2.2; }
+  .frame .txt { text-align:left !important; }
+  .frame .big { font-size:28px; letter-spacing:0.3em; margin-bottom:24px; }
+  .frame .idx { margin-bottom:12px; display:block; }
+  .fend { min-height:30vh; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+<div class="blank">
+
+<div class="frame f0">
+  <div class="big">林の向こうに、<br>静かにある。</div>
+  <div class="txt">山もあれば、海もある。そのどちらも、名前を大きく掲げることなく、林の向こうにあります。<span class="label">JOURNAL ／ AROUND UKI</span></div>
+</div>
+
+<div class="frame f1">
+  <span class="idx">01 ／ OMURO-YAMA</span>
+  <div class="photo landscape mid">大室山 ／ 火口の縁</div>
+  <div class="txt"><span class="name">大室山</span>およそ四千年前に噴火し、その溶岩がこの台地をつくった。木が一本もなく、草だけに覆われている。<span class="label">車 12 分</span></div>
+</div>
+
+<div class="frame f2">
+  <span class="idx">02 ／ JOGASAKI</span>
+  <div class="photo portrait dark">門脇吊橋</div>
+  <div class="txt"><span class="name">城ヶ崎海岸</span>溶岩が海に達して冷えた岸。黒い岩に波が砕ける。<span class="label">徒歩 25 分</span></div>
+</div>
+
+<div class="frame f3">
+  <div class="txt"><span class="name">八幡野港</span>朝、この港から漁船が出ていく音が、林の奥まで届く。<span class="label">徒歩 15 分</span></div>
+  <div class="photo wide">八幡野港 ／ 六時前</div>
+  <span class="idx">03 ／ YAWATANO PORT</span>
+</div>
+
+<div class="frame f4">
+  <span class="idx">04 ／ TAJIMA-NO-TAKI</span>
+  <div class="photo tall dark">対島の滝</div>
+  <div class="txt tate">川がそのまま海へ落ちる。雨のあとにだけ、滝になる。</div>
+</div>
+
+<div class="frame f5">
+  <span class="idx">05 ／ IPPEKI-KO</span>
+  <div class="photo landscape mid">一碧湖 ／ 無風の朝</div>
+  <div class="txt"><span class="name">一碧湖</span>およそ十万年前の火口湖。風のない朝は、対岸の林がそのまま水面に映る。<span class="label">車 15 分 ／ 周囲 4km</span></div>
+</div>
+
+<div class="frame f6">
+  <span class="idx">06 ／ HOSONO KOGEN</span>
+  <div class="photo portrait">細野高原 ／ 十月</div>
+  <div class="txt"><span class="name">細野高原</span>風が通ると、穂が同じ方向へ倒れる。<span class="label">車 25 分</span></div>
+</div>
+
+<div class="frame f7">
+  <span class="idx">07 ／ BACK TO UKI</span>
+  <div class="photo square mid">八幡野の林 ／ 帰り道</div>
+  <div class="photo portrait b">湯 ／ 夕方</div>
+  <div class="txt"><span class="name">浮</span>どこへ行っても、帰る道は林に入る。松と雑木の間の別荘のひとつが、ukiになった。</div>
+</div>
+
+<div class="frame fend"><div><div class="serif">歩いた人だけが見つける景色へ。</div><div class="label" style="margin-top:16px;">TO BE CONTINUED</div></div></div>
+
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.10 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>journal 05. 白紙 — Blank</b><div class="axes">1画面=1枚 ／ 置く位置が毎回変わる ／ 余白が主役 ／ 17写真ストリームの発展（極端余白）</div></div>
+</body>
+</html>

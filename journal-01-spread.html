@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>journal 01. 見開き — Spread｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root { --bg:#FAFAF7; --text:#333333; --muted:#666666; --soft:#AEACAC; --accent:#8C8578; --dark:#222222; --photo-light:#d8d3cb; --photo-mid:#8a857c; --photo-dark:#3a3631; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP","Hiragino Sans",sans-serif; font-weight:300; line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+.nav { position:fixed; top:0; left:0; right:0; padding:28px 44px; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:difference; color:var(--bg); }
+.nav-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; display:flex; align-items:baseline; gap:8px; }
+.nav-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; }
+.nav-right { display:flex; gap:28px; align-items:center; }
+.menu-btn { font-size:11px; letter-spacing:0.25em; font-family:"Lato",sans-serif; }
+.reserve-btn { padding:8px 18px; border:1px solid currentColor; font-size:10px; letter-spacing:0.3em; font-family:"Lato",sans-serif; }
+.photo { background:var(--photo-light); display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.25); font-size:11px; letter-spacing:0.3em; font-family:"Lato",sans-serif; text-align:center; line-height:1.6; }
+.photo.dark { background:var(--photo-dark); color:rgba(255,255,255,0.3); }
+.photo.mid { background:var(--photo-mid); color:rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio:3/4; }
+.photo.tall { aspect-ratio:4/5; }
+.photo.landscape { aspect-ratio:4/3; }
+.photo.wide { aspect-ratio:16/9; }
+.photo.square { aspect-ratio:1/1; }
+footer { padding:80px 44px 40px; border-top:1px solid #eee; margin-top:120px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; font-size:11px; color:var(--muted); }
+.footer-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.footer-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--muted); }
+.variant-tag { position:fixed; bottom:20px; left:20px; background:rgba(34,34,34,0.85); color:#fff; padding:8px 14px; font-size:10px; letter-spacing:0.15em; font-family:"Lato",sans-serif; z-index:200; max-width:320px; line-height:1.6; }
+.variant-tag b { font-weight:600; }
+.variant-tag .axes { color:#c8c4bd; margin-top:4px; font-size:9px; }
+.label { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--soft); }
+.serif { font-family:"Noto Serif JP",serif; }
+/* 01 見開き: 1スポット=1見開き。ページ番号・柱（running head）を持ち、見開きごとに写真の置き方が変わる */
+.book { padding-top:120px; }
+.spread { max-width:1360px; margin:0 auto 140px; padding:0 60px; position:relative; }
+.spread .folio { display:flex; justify-content:space-between; font-family:"Lato",sans-serif; font-size:9px; letter-spacing:0.35em; color:var(--soft); border-bottom:1px solid rgba(0,0,0,0.06); padding-bottom:10px; margin-bottom:40px; }
+.spread .folio .ja { font-family:"Noto Serif JP",serif; letter-spacing:0.4em; font-size:10px; }
+.pages { display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+.page { position:relative; }
+.spot-no { font-family:"Lato",sans-serif; font-size:64px; font-weight:300; letter-spacing:0.05em; color:var(--soft); line-height:1; }
+.spot-name { font-family:"Noto Serif JP",serif; font-size:30px; letter-spacing:0.4em; margin-top:16px; line-height:1.6; }
+.spot-en { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.35em; color:var(--accent); margin-top:8px; }
+.spot-body { font-size:13px; line-height:2.3; color:var(--muted); margin-top:32px; max-width:360px; }
+.spot-body.serif { font-family:"Noto Serif JP",serif; font-size:14px; }
+.spot-meta { margin-top:32px; display:grid; grid-template-columns:auto 1fr; gap:6px 24px; font-size:11px; color:var(--muted); }
+.spot-meta dt { font-family:"Lato",sans-serif; font-size:9px; letter-spacing:0.3em; color:var(--soft); padding-top:3px; }
+.cap { font-size:10px; letter-spacing:0.15em; color:var(--soft); margin-top:10px; }
+.spread.t1 .page-l .photo { width:100%; }
+.spread.t1 .page-r { padding-top:120px; }
+.spread.t2 .pages { grid-template-columns:5fr 7fr; }
+.spread.t2 .page-r .photo { width:100%; }
+.spread.t2 .page-l { padding-top:40px; }
+.spread.t2 .page-l .photo { width:55%; margin-top:60px; margin-left:auto; }
+.spread.t3 .page-l .photo { width:70%; }
+.spread.t3 .page-r .photo.a { width:60%; margin-left:auto; margin-top:200px; }
+.spread.t3 .page-r .text { position:absolute; left:0; top:0; max-width:240px; }
+.spread.t4 .pages { grid-template-columns:1fr; }
+.spread.t4 .photo { width:100%; }
+.spread.t4 .text { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:40px; }
+.spread.t5 .page-l { padding-top:180px; }
+.spread.t5 .page-l .photo { width:50%; }
+.spread.t5 .page-r .photo { width:100%; }
+.spread.t5 .page-r .cap { text-align:right; }
+.intro { max-width:1360px; margin:0 auto 160px; padding:0 60px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:end; }
+.intro h1 { font-family:"Noto Serif JP",serif; font-size:40px; letter-spacing:0.5em; font-weight:300; line-height:1.5; }
+.intro p { font-size:13px; line-height:2.3; color:var(--muted); max-width:400px; }
+@media (max-width:768px) {
+  .book { padding-top:90px; }
+  .intro, .spread { padding:0 24px; margin-bottom:90px; }
+  .intro { grid-template-columns:1fr; gap:24px; }
+  .intro h1 { font-size:26px; letter-spacing:0.3em; }
+  .pages, .spread.t2 .pages, .spread.t4 .text { grid-template-columns:1fr; gap:32px; }
+  .spread .page-r, .spread.t1 .page-r, .spread.t2 .page-l, .spread.t5 .page-l { padding-top:0; }
+  .spread.t3 .page-r .text { position:static; max-width:none; }
+  .spread.t3 .page-r .photo.a { margin-top:24px; }
+  .spread .photo, .spread.t2 .page-l .photo, .spread.t3 .page-l .photo, .spread.t5 .page-l .photo { width:100% !important; margin-left:0; }
+  .spot-no { font-size:40px; }
+  .spot-name { font-size:22px; letter-spacing:0.3em; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+<div class="book">
+
+<div class="intro">
+  <div>
+    <div class="label">JOURNAL ／ AROUND UKI</div>
+    <h1 style="margin-top:24px;">歩いて<br>見つける景色</h1>
+  </div>
+  <p>ukiが位置する伊豆高原は、およそ四千年前、大室山の噴火が流した溶岩の上にできた台地です。山もあれば、海もある。地図に載る場所ではなく、歩いた人だけが見つける景色へ。</p>
+</div>
+
+<div class="spread t1">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>01 ／ 大室山</span><span>P. 02 — 03</span></div>
+  <div class="pages">
+    <div class="page page-l">
+      <div class="photo tall mid">大室山 ／ 草に覆われた山体</div>
+      <p class="cap">春の山焼きのあと、稜線が黒くなる</p>
+    </div>
+    <div class="page page-r">
+      <div class="spot-no">01</div>
+      <div class="spot-name">大室山</div>
+      <div class="spot-en">OMURO-YAMA ／ 車 12 分</div>
+      <p class="spot-body serif">およそ四千年前に噴火し、その溶岩が伊豆高原の台地をつくった火山。木が一本もなく、草だけに覆われている。山頂の火口をぐるりと歩くと、二十分ほどで一周する。</p>
+      <dl class="spot-meta"><dt>ALT.</dt><dd>580m</dd><dt>UP</dt><dd>リフト 約6分</dd><dt>NOTE</dt><dd>徒歩での登山は不可</dd></dl>
+    </div>
+  </div>
+</div>
+
+<div class="spread t2">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>02 ／ 城ヶ崎海岸</span><span>P. 04 — 05</span></div>
+  <div class="pages">
+    <div class="page page-l">
+      <div class="spot-no">02</div>
+      <div class="spot-name">城ヶ崎海岸</div>
+      <div class="spot-en">JOGASAKI ／ 徒歩 25 分</div>
+      <p class="spot-body">大室山の溶岩が海に達し、冷えて固まった岸。黒い岩に波が砕ける。ピクニカルコースとして岬から岬へ、林の中の小道が続く。</p>
+      <div class="photo square dark">断崖の足元</div>
+    </div>
+    <div class="page page-r">
+      <div class="photo portrait dark">門脇吊橋 ／ 海面から 23m</div>
+      <p class="cap">吊橋の下、潮の音だけが上がってくる</p>
+    </div>
+  </div>
+</div>
+
+<div class="spread t3">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>03 ／ 八幡野港</span><span>P. 06 — 07</span></div>
+  <div class="pages">
+    <div class="page page-l">
+      <div class="photo landscape">八幡野港 ／ 朝</div>
+      <p class="cap">港の斜路に船が引き上げられている</p>
+    </div>
+    <div class="page page-r">
+      <div class="text">
+        <div class="spot-no">03</div>
+        <div class="spot-name">八幡野港</div>
+        <div class="spot-en">YAWATANO ／ 徒歩 15 分</div>
+        <p class="spot-body">台地の南端、集落を抜けると道は小さな漁港で海に突き当たる。朝、この港から漁船が出ていく音が、林の奥まで届く。</p>
+      </div>
+      <div class="photo portrait a mid">防波堤の先端</div>
+    </div>
+  </div>
+</div>
+
+<div class="spread t4">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>04 ／ 一碧湖</span><span>P. 08 — 09</span></div>
+  <div class="pages">
+    <div class="page">
+      <div class="photo wide mid">一碧湖 ／ 水面に映る対岸の林</div>
+      <div class="text">
+        <div>
+          <div class="spot-no">04</div>
+          <div class="spot-name">一碧湖</div>
+          <div class="spot-en">IPPEKI-KO ／ 車 15 分</div>
+        </div>
+        <p class="spot-body">およそ十万年前の噴火でできた火口湖。周囲四キロの遊歩道を、一時間ほどで歩く。風のない朝は、対岸の林がそのまま水面に映る。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="spread t5">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>05 ／ 細野高原</span><span>P. 10 — 11</span></div>
+  <div class="pages">
+    <div class="page page-l">
+      <div class="spot-no">05</div>
+      <div class="spot-name">細野高原</div>
+      <div class="spot-en">HOSONO KOGEN ／ 車 25 分</div>
+      <p class="spot-body">天城の山裾に広がる草原。秋にはススキが一面に立ち、風が通ると穂が同じ方向へ倒れる。眼下に海が見える。</p>
+      <div class="photo square">ススキの原</div>
+    </div>
+    <div class="page page-r">
+      <div class="photo tall mid">草原の道 ／ 秋</div>
+      <p class="cap">十月、穂が揃って光る</p>
+    </div>
+  </div>
+</div>
+
+<div class="spread t1">
+  <div class="folio"><span class="ja">浮　周辺記</span><span>06 ／ 対島の滝</span><span>P. 12 — 13</span></div>
+  <div class="pages">
+    <div class="page page-l">
+      <div class="photo portrait dark">対島の滝 ／ 海へ直接落ちる</div>
+      <p class="cap">雨のあとにだけ、水が落ちる</p>
+    </div>
+    <div class="page page-r">
+      <div class="spot-no">06</div>
+      <div class="spot-name">対島の滝</div>
+      <div class="spot-en">TAJIMA-NO-TAKI ／ 徒歩 20 分</div>
+      <p class="spot-body serif">川が海に落ちるところ。断崖の上から、水がそのまま海へ注ぐ。晴れが続くと水は絶え、雨のあとにだけ滝になる。</p>
+      <dl class="spot-meta"><dt>NOTE</dt><dd>展望台から見る。滝壺へは降りられない</dd></dl>
+    </div>
+  </div>
+</div>
+
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.10 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>journal 01. 見開き — Spread</b><div class="axes">1スポット=1見開き ／ ページ番号・柱あり ／ 見開きごとに写真配置が変わる ／ 14誌面の継承</div></div>
+</body>
+</html>

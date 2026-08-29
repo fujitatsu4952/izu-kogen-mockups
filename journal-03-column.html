@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>journal 03. 連載 — Column｜浮 -uki- mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="palette-switcher.css">
+<script src="palette-switcher.js" defer></script>
+<link rel="stylesheet" href="sp-common.css">
+<style>
+:root { --bg:#FAFAF7; --text:#333333; --muted:#666666; --soft:#AEACAC; --accent:#8C8578; --dark:#222222; --photo-light:#d8d3cb; --photo-mid:#8a857c; --photo-dark:#3a3631; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:var(--bg); color:var(--text); font-family:"Noto Sans JP","Hiragino Sans",sans-serif; font-weight:300; line-height:1.9; }
+a { color:inherit; text-decoration:none; }
+.nav { position:fixed; top:0; left:0; right:0; padding:28px 44px; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:difference; color:var(--bg); }
+.nav-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; display:flex; align-items:baseline; gap:8px; }
+.nav-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; }
+.nav-right { display:flex; gap:28px; align-items:center; }
+.menu-btn { font-size:11px; letter-spacing:0.25em; font-family:"Lato",sans-serif; }
+.reserve-btn { padding:8px 18px; border:1px solid currentColor; font-size:10px; letter-spacing:0.3em; font-family:"Lato",sans-serif; }
+.photo { background:var(--photo-light); display:flex; align-items:center; justify-content:center; color:rgba(0,0,0,0.25); font-size:11px; letter-spacing:0.3em; font-family:"Lato",sans-serif; text-align:center; line-height:1.6; }
+.photo.dark { background:var(--photo-dark); color:rgba(255,255,255,0.3); }
+.photo.mid { background:var(--photo-mid); color:rgba(255,255,255,0.4); }
+.photo.portrait { aspect-ratio:3/4; }
+.photo.tall { aspect-ratio:4/5; }
+.photo.landscape { aspect-ratio:4/3; }
+.photo.wide { aspect-ratio:16/9; }
+.photo.square { aspect-ratio:1/1; }
+footer { padding:80px 44px 40px; border-top:1px solid #eee; margin-top:120px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:flex-end; font-size:11px; color:var(--muted); }
+.footer-logo { font-family:"Noto Serif JP",serif; font-size:18px; letter-spacing:0.2em; color:var(--text); display:flex; align-items:baseline; gap:8px; }
+.footer-logo .romaji { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.25em; color:var(--muted); }
+.variant-tag { position:fixed; bottom:20px; left:20px; background:rgba(34,34,34,0.85); color:#fff; padding:8px 14px; font-size:10px; letter-spacing:0.15em; font-family:"Lato",sans-serif; z-index:200; max-width:320px; line-height:1.6; }
+.variant-tag b { font-weight:600; }
+.variant-tag .axes { color:#c8c4bd; margin-top:4px; font-size:9px; }
+.label { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.3em; color:var(--soft); }
+.serif { font-family:"Noto Serif JP",serif; }
+/* 03 連載: 左に固定の目次（連載番号）、右に記事が流れる。文字多め・明朝本文。雑誌の連載コラム */
+.col { display:grid; grid-template-columns:260px 1fr; max-width:1400px; margin:0 auto; padding:140px 60px 100px; gap:80px; }
+.toc { position:sticky; top:140px; align-self:start; }
+.toc .label { display:block; margin-bottom:28px; }
+.toc ol { list-style:none; }
+.toc li { font-size:11px; letter-spacing:0.2em; color:var(--soft); padding:8px 0; border-top:1px solid rgba(0,0,0,0.05); display:flex; gap:16px; }
+.toc li .no { font-family:"Lato",sans-serif; letter-spacing:0.3em; width:36px; }
+.toc li.on { color:var(--text); }
+.toc li.on .no { color:var(--accent); }
+.toc .tate { writing-mode:vertical-rl; font-family:"Noto Serif JP",serif; font-size:22px; letter-spacing:0.5em; color:var(--muted); height:260px; margin-top:60px; margin-left:auto; }
+.art { border-top:1px solid rgba(0,0,0,0.08); padding:60px 0 120px; display:grid; grid-template-columns:repeat(12,1fr); gap:24px; }
+.art:first-child { border-top:0; padding-top:0; }
+.art .h { grid-column:1 / span 12; display:flex; justify-content:space-between; align-items:baseline; margin-bottom:40px; }
+.art .h .t { font-family:"Noto Serif JP",serif; font-size:26px; letter-spacing:0.4em; font-weight:300; }
+.art .h .t small { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.35em; color:var(--soft); margin-left:20px; }
+.art .h .vol { font-family:"Lato",sans-serif; font-size:10px; letter-spacing:0.35em; color:var(--accent); }
+.art .lede { grid-column:1 / span 5; font-family:"Noto Serif JP",serif; font-size:17px; line-height:2.4; letter-spacing:0.1em; }
+.art .body { font-size:12.5px; line-height:2.4; color:var(--muted); column-count:2; column-gap:32px; }
+.art .body p + p { margin-top:1.2em; }
+.art .body .drop::first-letter { font-family:"Noto Serif JP",serif; font-size:44px; float:left; line-height:1; padding:6px 10px 0 0; color:var(--text); }
+.art .cap { font-size:10px; letter-spacing:0.15em; color:var(--soft); margin-top:10px; }
+.art .data { font-size:11px; color:var(--muted); line-height:2; border-left:1px solid rgba(0,0,0,0.08); padding-left:20px; }
+.art .data b { font-family:"Lato",sans-serif; font-weight:400; font-size:9px; letter-spacing:0.3em; color:var(--soft); display:block; }
+/* 記事ごとの組み */
+.a1 .p1 { grid-column:7 / span 6; grid-row:2 / span 2; }
+.a1 .body { grid-column:1 / span 6; }
+.a1 .data { grid-column:1 / span 3; margin-top:32px; }
+.a2 .p1 { grid-column:1 / span 7; }
+.a2 .lede { grid-column:9 / span 4; align-self:end; }
+.a2 .body { grid-column:2 / span 8; margin-top:48px; }
+.a2 .p2 { grid-column:10 / span 3; margin-top:48px; }
+.a3 .lede { grid-column:1 / span 4; }
+.a3 .p1 { grid-column:6 / span 3; }
+.a3 .p2 { grid-column:9 / span 4; margin-top:120px; }
+.a3 .body { grid-column:1 / span 7; margin-top:48px; }
+.a3 .data { grid-column:9 / span 3; margin-top:48px; align-self:start; }
+.a4 .p1 { grid-column:1 / span 12; }
+.a4 .lede { grid-column:1 / span 4; margin-top:48px; }
+.a4 .body { grid-column:6 / span 7; margin-top:48px; }
+@media (max-width:768px) {
+  .col { grid-template-columns:1fr; padding:100px 24px 60px; gap:40px; }
+  .toc { position:static; }
+  .toc .tate { display:none; }
+  .art { display:flex; flex-direction:column; gap:24px; padding:48px 0 60px; }
+  .art .h { flex-direction:column; align-items:flex-start; gap:8px; margin-bottom:8px; }
+  .art .h .t { font-size:20px; letter-spacing:0.3em; }
+  .art .body { column-count:1; }
+  .art .lede { font-size:15px; }
+  .art .data { margin-top:0 !important; }
+  .art [class^="p"] { margin-top:0 !important; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">浮<span class="romaji">-uki-</span></div>
+  <div class="nav-right">
+    <span class="menu-btn">MENU</span>
+    <span class="reserve-btn">RESERVE</span>
+  </div>
+</nav>
+<div class="col">
+  <aside class="toc">
+    <span class="label">JOURNAL ／ SERIAL</span>
+    <ol>
+      <li class="on"><span class="no">001</span>溶岩の上を歩く</li>
+      <li><span class="no">002</span>港の朝</li>
+      <li><span class="no">003</span>水の落ちる場所</li>
+      <li><span class="no">004</span>穂が倒れる方向</li>
+      <li><span class="no">005</span>（次号）</li>
+    </ol>
+    <div class="tate">林の向こうの記録</div>
+  </aside>
+
+  <main>
+    <article class="art a1">
+      <div class="h"><div class="t">溶岩の上を歩く<small>OMURO-YAMA → JOGASAKI</small></div><div class="vol">VOL. 001</div></div>
+      <p class="lede">およそ四千年前、大室山の噴火が流した溶岩は、海まで達して冷えた。その上を、いま歩いている。</p>
+      <div class="p1"><div class="photo tall mid">大室山 ／ 山頂の火口</div><p class="cap">木が一本もない。草だけの山</p></div>
+      <div class="body">
+        <p class="drop">大室山にはリフトで上がる。六分ほど。山頂には火口があり、その縁を歩くと二十分で一周する。ここから見下ろす台地の全体が、この山が流した溶岩でできている。</p>
+        <p>台地の東の端が城ヶ崎海岸。溶岩が海に達して固まった岸で、黒い岩に波が砕ける。岬から岬へ、林の中の小道が続いている。門脇の吊橋は海面から二十三メートル。下から潮の音だけが上がってくる。</p>
+        <p>ukiから城ヶ崎までは歩いて二十五分。林を抜け、岩の上に出る。四千年前の地面の上に立っていると、しばらく黙ってしまう。</p>
+      </div>
+      <div class="data"><b>OMURO-YAMA</b>標高580m ／ 車12分<b style="margin-top:10px;">JOGASAKI</b>徒歩25分 ／ ピクニカルコース約3km</div>
+    </article>
+
+    <article class="art a2">
+      <div class="h"><div class="t">港の朝<small>YAWATANO PORT</small></div><div class="vol">VOL. 002</div></div>
+      <div class="p1"><div class="photo wide">八幡野港 ／ 六時前</div><p class="cap">斜路に船が引き上げられている</p></div>
+      <p class="lede">台地の南端、集落を抜けると、道は小さな漁港で海に突き当たる。</p>
+      <div class="body">
+        <p class="drop">朝、この港から漁船が出ていく音が、林の奥まで届く。ukiの部屋で目が覚めて、その音を聞いてから港まで歩くと十五分。船はもう戻ってきていることもある。</p>
+        <p>防波堤の先端まで行ける。振り返ると、台地の縁に林が続き、その中に別荘の屋根が点々と見える。そのどれかがukiだと思うと、距離の感覚が変わる。</p>
+      </div>
+      <div class="p2"><div class="photo portrait mid">防波堤の先端</div></div>
+    </article>
+
+    <article class="art a3">
+      <div class="h"><div class="t">水の落ちる場所<small>TAJIMA-NO-TAKI ／ IPPEKI-KO</small></div><div class="vol">VOL. 003</div></div>
+      <p class="lede">対島の滝は、川がそのまま海へ落ちる。晴れが続くと水は絶え、雨のあとにだけ滝になる。</p>
+      <div class="p1"><div class="photo portrait dark">対島の滝</div></div>
+      <div class="p2"><div class="photo landscape mid">一碧湖 ／ 無風の朝</div><p class="cap">対岸の林がそのまま水面に映る</p></div>
+      <div class="body">
+        <p class="drop">一碧湖は、およそ十万年前の噴火でできた火口湖。周囲四キロの遊歩道を、一時間ほどで歩く。風のない朝は、対岸の林がそのまま水面に映って、どちらが上かわからなくなる。</p>
+        <p>滝と湖。どちらも火山の地形が水を集めた場所で、ukiの湯もまた、同じ地面の下から湧いてくる。</p>
+      </div>
+      <div class="data"><b>TAJIMA-NO-TAKI</b>徒歩20分 ／ 展望台から<b style="margin-top:10px;">IPPEKI-KO</b>車15分 ／ 周囲4km</div>
+    </article>
+
+    <article class="art a4">
+      <div class="h"><div class="t">穂が倒れる方向<small>HOSONO KOGEN</small></div><div class="vol">VOL. 004</div></div>
+      <div class="p1"><div class="photo wide mid">細野高原 ／ 十月</div><p class="cap">風が通ると、穂が同じ方向へ倒れる</p></div>
+      <p class="lede">天城の山裾に広がる草原。秋にはススキが一面に立ち、眼下に海が見える。</p>
+      <div class="body">
+        <p class="drop">車で二十五分。台地を離れて山の側へ入る。草原は広く、道が何本か通っていて、どれを歩いてもいい。十月の午後、穂が揃って光る時間がある。</p>
+        <p>帰り道は林に戻る。松と雑木の間に、昭和の頃からの別荘が残っていて、その一つがukiになった。</p>
+      </div>
+    </article>
+  </main>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">浮<span class="romaji">-uki-</span></div>
+    <div>
+      <div>静岡県伊東市八幡野</div>
+      <div>2026.10 OPEN</div>
+      <div style="margin-top:6px;">© KANGEISHA</div>
+    </div>
+  </div>
+</footer>
+<div class="variant-tag"><b>journal 03. 連載 — Column</b><div class="axes">左に固定目次（VOL.番号） ／ 右に記事が流れる ／ 明朝リード＋2段組本文＋ドロップキャップ ／ 文字多め</div></div>
+</body>
+</html>
